@@ -5,44 +5,31 @@
 	require("header.php");
 ?>
 
-	<p>
-		<h3>Login Page</h3>
-	</p>
-
-
-	<p>
-		<h4>Please enter the following information</h4>
-	</p>
+	<div class="py-5 text-center">
+        <h2>Login</h2>
+        <h4>Please enter the following information</h4>
+    </div>
 
 
 	<!-- The Form -->
-	<form action="processLogin.php" method="post">
-		<p>
-			<label> User Name
-				<input type="text" name="userName">
-			</label>
-		</p>
+	<form class="form-signin" action="processLogin.php" method="post">
+		
+		<div class="mb-3">
+			<label><strong>Username</strong></label>
+			<input class="form-control" type="text" name="userName" required/>
 
+			<label><strong>Password</strong></label>
+			<input class="form-control" type="password" name="password" required/>
+   		</div>
 
-		<p>
-			<label> Password
-				<input type="text" name="password">
-			</label>
-
-			<br/>
-		</p>
-
-
-		<p class="description">
+		<p class="description"><small>
 			A username can contain letters (both upper and lower case) and digits only. <br/>
 			A password must be at least 6 characters long (characters are to be letters and digits only), <br/>
 			have at least one letter and at least one digit
-		</p>
+		</small></p>
 
 
-		<p>
-			<button type="submit">Submit</button>
-		</p>
+		<button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
 
 	</form>
 

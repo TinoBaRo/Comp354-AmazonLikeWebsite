@@ -1,17 +1,22 @@
 
-
 body
 {
-	background: beige;
+	background: beige!important;
 }
 
-
-#footer
+.form-signin 
 {
-	background: grey;
+     width: 100%;
+     max-width: 550px;
+     padding: 15px;
+     margin: auto;
 }
 
-#header
+.form-signin .form-control 
 {
-	background: grey;
+     position: relative;
+     box-sizing: border-box;
+     height: auto;
+     padding: 10px;
+     font-size: 16px;
 }
