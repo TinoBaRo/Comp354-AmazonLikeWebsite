@@ -1,3 +1,1 @@
-tino:a1234567
-mario:a1234567
-lucas:a1234567
+tino:a1234567:Celestino:Ballesteros:43 Laurier:tino_teros@hotmail.com

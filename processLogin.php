@@ -34,10 +34,11 @@
 	}
 
 
-
-	// ---- CASE 1 ---- if the user has already logged in before
+	// LOGIN CASES
+	// Check that the user has already signed up before, then:
 	// if the user enters the incorrect password, make him try again.
-	// if he enters the correct password, redirect him to the search page
+	// if he enters the correct password, redirect him to the Home page
+	// if the user enters a non existing user, tell him to sign-up or enter the correct user name (NEED TO DO THIS)
 	$loggedBefore = false;
 
 	$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
@@ -51,7 +52,8 @@
 	//print_r($lineContents);
 
 	$correctPassword = false; 
-	
+
+	// READ
 	for ($i=0; $i < $length; $i++) 
 	{ 
 		$line = explode(':', $lineContents[$i] );
@@ -82,7 +84,6 @@
 		}
 	}
 
-
 	// if the user logged in before and the password is INCORRECT
 	// make the user try again to enter the correct password
 	if( ($loggedBefore == true) && ($correctPassword == false) )
@@ -97,7 +98,8 @@
 	}
 
 	// if the user logged in before and the password is CORRECT
-	// redirect him to to the Search page
+	// redirect him to to the Home page
+	// ALSO, REMOVE THE SIGN-IN, LOG-IN BUTTONS AND PUT LOGOUT!!!
 	if( ($loggedBefore == true) && ($correctPassword == true) )
 	{
 		// welcome message, and Search (NOT WRITE TO FILE, since he is already saved in file)
@@ -111,32 +113,18 @@
 
 		require("homePage.php");
 	}
-	
 
-
-	// ---- CASE 2 ---- if the user has NEVER logged in before
-	// he is not in the file
-	// he will be written into the file
-	if( ($correctName == true) && ($correctPass == true) && ($loggedBefore == false) )
+	// if the user has never been here before: he needs to sign up first or enter the correct username
+	if($loggedBefore == false)
 	{
-		//write to the file, welcome message, and Search
 		echo "<div align=\"right\">";
 
-		echo "<h4> Welcome " . $userName . "</h4>";
+		echo "The user name does not exist. Please enter the right user name or sign up.";
 
 		echo "</div>";
 
-		require("homePage.php");
-
-
-		// write it to: myFile = loginFile.txt
-		$myfile = fopen("loginData.txt", "a"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
-
-		$text = $userName . ":" . $userPass . "\n";
-
-		fwrite($myfile, $text);
-
-		fclose($myfile);
+		require("loginPage.php");
 	}
+
 
 ?>
