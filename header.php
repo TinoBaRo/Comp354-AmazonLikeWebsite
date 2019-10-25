@@ -24,7 +24,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  	
 		  	<a class="navbar-brand" href="homePage.php">
-		  		<img src="logo354TheStars.png" height="50" width="100"> <!-- Logo Picture -->
+		  		<img src="logo354TheStars.png" height="50" width="110"> <!-- Logo Picture -->
 		  	</a>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -39,11 +39,30 @@
 			        </div>
 			    </li>  	
 		    </ul>
-		    
-		    <form class="form-inline my-2 my-lg-0">
-  	 	 		<a class="nav-link" href="loginPage.php">Login</a>
-    	 		<a class="nav-link" href="signUpPage.php">Sign up</a>
-		    </form>
+    		
+    		<!-- Important: show the name of the user name that is logged in (all the time, so must be on the header) -->
+    		<!-- Conditions: showing Login and Signup buttons, or Logout button, depending on user logged in or not logged in -->
+    		<?php  
+    			// brings the data from active session here, or starts a session with no data
+    			session_start();
+
+    			if($_SESSION['username'] != null)
+    			{
+    				echo "Logged in as \"" . $_SESSION['username'] . "\"";
+
+    				echo "<form class=\"form-inline my-2 my-lg-0\">
+							<a class=\"nav-link\" href=\"processLogout.php\">Logout</a>
+	  						</form> ";
+    			}
+    			else
+    			{
+    				echo "<form class=\"form-inline my-2 my-lg-0\">
+	  	 	 				<a class=\"nav-link\" href=\"loginPage.php\">Login</a>
+	    	 				<a class=\"nav-link\" href=\"signUpPage.php\">Sign up</a>
+			    			</form>";
+    			}
+			    
+		    ?>
 
 		</div>
 

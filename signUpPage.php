@@ -46,6 +46,8 @@
 	</form>
 
 
-<?php
-    require("footer.php");
-?>
+<!-- don't need the other footer to browse between pages -->
+</body>
+</html>
+
+
