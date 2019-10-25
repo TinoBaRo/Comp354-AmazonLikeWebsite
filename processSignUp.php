@@ -4,8 +4,8 @@
 <?php
 	// start a session when someone Signs up
 	// also initialize 2 session variables: username and password
-	session_unset();
-	session_destroy();
+	//session_unset();
+	//session_destroy();
 
 	session_start();
 	$_SESSION['username'] = $_POST['userName']; 

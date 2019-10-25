@@ -50,8 +50,14 @@
     			{
     				echo "Logged in as \"" . $_SESSION['username'] . "\"";
 
+    				// if logged in, user will be able to logout
     				echo "<form class=\"form-inline my-2 my-lg-0\">
 							<a class=\"nav-link\" href=\"processLogout.php\">Logout</a>
+	  						</form> ";
+
+	  				// if logged in, user will be able to go to his/her profile page
+	  				echo "<form class=\"form-inline my-2 my-lg-0\">
+							<a class=\"nav-link\" href=\"userProfilePage.php\">User Profile</a>
 	  						</form> ";
     			}
     			else

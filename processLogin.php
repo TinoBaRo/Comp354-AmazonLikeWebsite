@@ -4,8 +4,8 @@
 <?php
 	// start a session when someone logs in
 	// also initialize 2 session variables: username and password
-	session_unset();
-	session_destroy();
+	//session_unset();
+	//session_destroy();
 
 	session_start();
 	$_SESSION['username'] = $_POST['userName']; 
@@ -119,7 +119,7 @@
 	{
 		unset($_SESSION);
 		session_destroy();
-		
+
 		echo "<div align=\"right\">";
 
 		echo "The user name does not exist. Please enter the right user name or sign up.";

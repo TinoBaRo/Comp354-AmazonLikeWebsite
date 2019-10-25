@@ -4,10 +4,12 @@
 	require("header.php");
 ?>
 		<div class="card m-2 bg-light">
+			
+			<!-- row -->
 			<div class="row">
 				<!-- Item Pic -->
 				<div class="col-md-5">
-					
+
 					<img src="dimeShirt.jpg" class="img-fluid">
 
 				</div>
@@ -37,7 +39,10 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 
+
+<!-- don't need the other footer -->
  	</body>
 </html>
