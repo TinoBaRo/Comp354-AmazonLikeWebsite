@@ -1,0 +1,5 @@
+1:Mario Hat:1.jpg:14.99:1:Hat that Mario wears, smells like the top of his head:*:Clothing:3:none
+2:The Hunger Games:2.jpg:9.99:1:Novel by Suzanne Collins, dystopian, young adult literary genre:*:Books:2:none
+3:XML Developer's Guide:3.jpg:59.99:1:In depth guide to writing XML code, written by Keith Wood:*:Books:0:none
+4:Baseball Bat:4.jpg:29.99:1:Swing and a miss:*:Sports:15:none
+5:Super Mario Maker 2:5.jpg:70.11:1:Super Mario Maker 2 for whatever game console::Video Games:1:none

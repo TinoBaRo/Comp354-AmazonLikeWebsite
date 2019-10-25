@@ -1,14 +1,10 @@
 <?php
-error_reporting(0);
 session_start();
-
-$lmain = $_POST['lmain'];
-$lindex = $_POST['lindex'];
+error_reporting(0);
 
 $username = $_POST['username'];
 
 //redirect user to home page if credentials are right
-
 /*
 if($login->isLoggedIn()) {
 	//die ("Already have an account, no need to be on this page.");
@@ -18,7 +14,6 @@ else {
 
 }
 */
-
 $userid = 0;
 $usertype = "";
 $host = 'localhost';

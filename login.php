@@ -1,54 +1,66 @@
 <?php
-error_reporting(0);
 session_start();
+error_reporting(0);
 
-$lmain = $_POST['lmain'];
-$lindex = $_POST['lindex'];
+$userid_index   = 0;
+$username_index = 1;
+$fname_index    = 2;
+$lname_index    = 3;
+$password_index = 4;
 
-if(isset($_POST['login']))
-{
-	$login = new Login();
+$invalid_msg = "Invalid username or password.";
 
+if(isset($_POST['login'])) {
 	$username = $_POST['username'];
+	$passwd = $_POST['password'];
+	
+	$userid = 0;
+	$usertype = '';
+	$host = 'localhost';
+	$user = 'root';
+	$passwd = '';
 
-	//redirect user to home page if credentials are right
-	if($login->isLoggedIn()) {
-		header('location: index.php');
+	//search to see if that person exists in DB
+	print ("logging ".$username." in...");
+
+	$users = file("database/users.txt", FILE_IGNORE_NEW_LINES);
+	for ($i = 0; $i < count($users); $i++) {
+		print ($users[$i]);
+		$datas = explode(":", $users[$i].PHP_EOL);
+		print ($username." == ".$datas[$username_index]."?");
+		if ($username == $datas[$username_index]) {
+			//we found the user in the DB
+			$userid = $datas[$userid_index];
+			print ("user found!");
+			//then check if passwords match up
+			if ($username == $datas[$password_index]) {
+				print (" login successful!!");
+				
+				ob_start();
+				//session_start();
+				
+				//create session and set session data
+				$_SESSION['userid'] = $datas[$userid_index];
+				$_SESSION['username'] = $datas[$username_index];
+				$_SESSION['firstname'] = $datas[$fname_index];
+				$_SESSION['lastname'] = $datas[$lname_index];				
+				//$token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
+				
+				//redirect to home page
+				//ob_start();
+				header('location: index.php');
+				//ob_end_flush();
+				//die();
+			}
+		}
+		else {
+			print ($invalid_msg);
+		}
 	}
-  	else {
-    	$login->showErrors();
-  	}
 }
 
-$userid = 0;
-$usertype = "";
-$host = 'localhost';
-$user = 'root';
-$passwd = '';
 
-//search to see if that person exists in DB
-
-$rs = $mysqli->query($_data);
-
-if (mysqli_num_rows($rs) === 0) {
-	print ("");
-}
-else if ($rs) {
- while ($row = $rs->fetch_assoc())
-	{
-		$_SESSION['userid'] = $row["userid"];
-		$_SESSION['usertype'] = $row["usertype"];
-		$_SESSION['firstname'] = $row["firstname"];
-		$_SESSION['lastname'] = $row["lastname"];
-		$_SESSION['address'] = $row["address"];
- 	}
-}
-
-$token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
-
-print ("successful login");
 ?>
-
 
 <head>
   	<link rel="stylesheet" type="text/css" href="login.css">
@@ -57,12 +69,15 @@ print ("successful login");
   <body>
     <label>
 		<form method="POST" action="<?=$_SERVER['PHP_SELF'];?>">
-		<img id="ima" src="pictures/logo.png">
+		<!--<img id="ima" src="pictures/logo.png">-->
 
 		<table>
 			<tr><h3>Sign in</h3></tr>
-			<tr><td>Username:</td><td> <input type="text" name="username" required/></td></tr>
-			<tr><td>Password:</td><td> <input type="password" name="password" required/></td></tr>
+			<tr><td>Username:</td><td> <input type="text" value="admin" name="username" required/></td></tr>
+			<tr><td>Password:</td><td> <input type="password" 
+			value="admin" name="password" required/></td></tr>
+			<!--<tr><td>Password:</td><td> <input type="password" 
+			value="password" name="password" required/></td></tr>-->
    		</table>
 
  		<input type="hidden" name="userid" value="<?=$userid;?>" >
