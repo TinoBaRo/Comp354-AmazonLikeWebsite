@@ -117,6 +117,9 @@
 	// if the user has never been here before: he needs to sign up first or enter the correct username
 	if($loggedBefore == false)
 	{
+		unset($_SESSION);
+		session_destroy();
+		
 		echo "<div align=\"right\">";
 
 		echo "The user name does not exist. Please enter the right user name or sign up.";

@@ -7,7 +7,9 @@
 			<div class="row">
 				<!-- Item Pic -->
 				<div class="col-md-5">
+					
 					<img src="dimeShirt.jpg" class="img-fluid">
+
 				</div>
 
 				<!-- Item description-->

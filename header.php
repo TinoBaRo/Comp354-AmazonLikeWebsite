@@ -67,5 +67,11 @@
 		</div>
 
 		</nav>
+
+
+		<!-- Messages below the navigation bar -->
+		<p>
+			
+		</p>
 		
         

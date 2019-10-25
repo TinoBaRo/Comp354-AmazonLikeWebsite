@@ -99,6 +99,9 @@
 	// if the user is found in the database (loggedBefore is true): the user name already exists
 	if($loggedBefore == true)
 	{
+		unset($_SESSION);
+		session_destroy();
+
 		echo "<div>";
 
 		echo "<h4> The user already exists, please log in or sign up with a different user name .</h4>";
