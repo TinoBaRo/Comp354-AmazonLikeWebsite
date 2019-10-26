@@ -12,11 +12,12 @@
 	$_SESSION['password'] = $_POST['password'];
 
 
-	//
+	// Regular expression for username and password
 	$reg_name = "/^([a-z]|[A-Z]|[0-9])*([a-z]|[A-Z]|[0-9])$/";
 	$reg_password = "/^([a-z]|[A-Z]|[0-9]){6,}$/";
 
 
+	// holder variables we will use for the processing
 	$userName = $_POST['userName'];
 	$userPass = $_POST['password'];
 

@@ -14,7 +14,7 @@
 	<div>
 		<?php  
 			// Show user name profile
-			echo "<h2> Your Profile " . "\"" .$_SESSION['username'] . "\"" . "</h2>";
+			echo "<h2> Your Profile " . "\"" . $_SESSION['username'] . "\"" . "</h2>";
 		?>
 
 		<!-- default avatar photo -->
@@ -23,8 +23,9 @@
 		<!-- dynamic information -->
 		<?php
 			// display other information
-			echo "<h6>" . "User email: ..." .  "</h6>";
-			echo "<h6>" . "User address: ..." .  "</h6>";
+			echo "<h6> Full name: " . $_SESSION['firstName'] . " " . $_SESSION['lastName'] . "</h6>";
+			echo "<h6> User address: " . $_SESSION['address'] . "</h6>";
+			echo "<h6> User e-mail: " . $_SESSION['email'] . "</h6>";
 		?>
 	</div>
 

@@ -8,14 +8,20 @@
 	//session_destroy();
 
 	session_start();
+	// STORE SESSION DATA
 	$_SESSION['username'] = $_POST['userName']; 
 	$_SESSION['password'] = $_POST['password'];
 
-	//
+	$_SESSION['firstName'] = $_POST['firstName'];
+	$_SESSION['lastName'] = $_POST['lastName'];
+	$_SESSION['address'] = $_POST['address'];
+	$_SESSION['email'] = $_POST['email'];
+
+	//Regular Expression for name and password
 	$reg_name = "/^([a-z]|[A-Z]|[0-9])*([a-z]|[A-Z]|[0-9])$/";
 	$reg_password = "/^([a-z]|[A-Z]|[0-9]){6,}$/";
 
-
+	// holder variables we will use through the processing
 	$userName = $_POST['userName'];
 	$userPass = $_POST['password'];
 	$firstName = $_POST['firstName'];
