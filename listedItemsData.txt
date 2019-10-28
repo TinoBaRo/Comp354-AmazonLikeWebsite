@@ -1,1 +1,1 @@
-userName:description:category:price:quantity:pathToLocalFolderForPicture
+userName:description:category:price:quantity:imageNameWithPath
