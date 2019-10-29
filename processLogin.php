@@ -89,6 +89,9 @@
 	// make the user try again to enter the correct password
 	if( ($loggedBefore == true) && ($correctPassword == false) )
 	{
+		unset($_SESSION);
+		session_destroy();
+		
 		echo "<h4> The user logged in before, but the password is incorrect. </h4>";
 
 		echo " <h4> Please, try entering the correct password again. </h4>";
