@@ -6,7 +6,7 @@
 ?>
 
 	<p>
-		<h3>Home Page</h3>
+		<h3><span style="padding-left:10px;">Home Page</span></h3>
 	</p>
 
 	<main role="main">

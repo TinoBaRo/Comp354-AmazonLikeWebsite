@@ -46,7 +46,7 @@
     			// brings the data from active session here, or starts a session with no data
     			session_start();
 
-    			if($_SESSION['username'] != null)
+    			if(isset($_SESSION['username']))
     			{
     				echo "Logged in as \"" . $_SESSION['username'] . "\"";
 
