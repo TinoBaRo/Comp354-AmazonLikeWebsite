@@ -64,9 +64,9 @@
 
 	<!--Action Links -->
 	<div>
-		<a href="#">Purchased Items</a> </br></br>
-		<a href="#">Current Listed Items</a> </br></br>
-		
+		<button><a href="#">Purchased Items</a></button> </br></br>
+		<button><a href="userCurrentItems.php">Current Listed Items</a> 
+                </button></br></br>
 		<button> <a href="postItemPage.php">Post New Item</a>
 		</button>
 	</div>
