@@ -5,7 +5,7 @@
 	session_start();
 
 	require("header.php");
-	echo "Writing to database the new item info ..."; 
+	echo "Writing to database the new item info ...<br>"; 
 
 
 	// results from the post item form
@@ -23,4 +23,11 @@
 	fwrite($myfile, $text);
 
 	fclose($myfile);
+        echo "<br>Done!";
+
+
 ?>
+<div>
+        
+        <button><a href="userprofilepage.php">Back to user profile</a></button>
+</div>
