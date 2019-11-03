@@ -18,7 +18,7 @@
 		?>
 
 		<!-- default avatar photo -->
-		<img src="userPhoto.png" height="200" width="200">
+		<img src="images/userPhoto.png" height="200" width="200">
 
 		<!-- dynamic information (has to be read from the database) -->
 		<?php
@@ -40,11 +40,11 @@
 			{ 
 				$line = explode(':', $lineContents[$i] ); // iterates every line
 				
-				$userName = $line[0];
-				$firstName = $line[2];
-				$lastName = $line[3];
-				$address = $line[4];
-				$email = $line[5];
+				$userName = $line[1];
+				$firstName = $line[3];
+				$lastName = $line[4];
+				$address = $line[5];
+				$email = $line[6];
 
 				// match the user that is currently in active session
 				if (strcmp($userName, $_SESSION['username']) == 0) // found the user we were looking for
@@ -67,6 +67,7 @@
 		<button><a href="#">Purchased Items</a></button> </br></br>
 		<button><a href="userCurrentItems.php">Current Listed Items</a> 
                 </button></br></br>
+		
 		<button> <a href="postItemPage.php">Post New Item</a>
 		</button>
 	</div>

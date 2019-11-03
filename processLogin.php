@@ -2,6 +2,8 @@
 <!-- This file processes the login Form (from loginPage.php), and then does an action --> 
 
 <?php
+	error_reporting(0);
+
 	// start a session when someone logs in
 	// also initialize 2 session variables: username and password
 	//session_unset();
@@ -20,7 +22,6 @@
 	// holder variables we will use for the processing
 	$userName = $_POST['userName'];
 	$userPass = $_POST['password'];
-
 
 	if( preg_match($reg_name, $userName) == true )
 	{
@@ -59,10 +60,9 @@
 	{ 
 		$line = explode(':', $lineContents[$i] );
 
-		$lineName = $line[0];
-
-		$linePass = $line[1];
-
+		$lineId = $line[0];
+		$lineName = $line[1];
+		$linePass = $line[2];
 
 		// userName is matched: the user has been here before
 		if( strcmp($userName, $lineName) == 0 )
@@ -77,7 +77,7 @@
 			if( strcmp($userPass, $linePass) == 0 )
 			{
 				$correctPassword = true;
-				//echo "Set $correctPassword to true";
+				$_SESSION['userid'] = $lineId; // <- user's id also sent to session var
 			}
 
 			// we found the logged value
@@ -115,7 +115,8 @@
 
 		echo "</div>";
 
-		require("homePage.php");
+		//require("homePage.php");
+		header("location: homePage.php");
 	}
 
 	// if the user has never been here before: he needs to sign up first or enter the correct username
