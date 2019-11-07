@@ -1,1 +1,0 @@
-userName:description:category:price:quantity:imageNameAndPath
