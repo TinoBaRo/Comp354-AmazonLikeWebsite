@@ -114,7 +114,7 @@ div#pad_left {
 		Item Name<br />
 		<input type="text" name="itemname" required></input><br />
 		Price ($)<br />
-		<input type="number" name="price" step="0.01" required></input><br />
+		<input type="number" name="price" step="0.01" min="0.01" required></input><br />
 		Stock<br />
 		<input type="number" name="stock" step="1" min="1" required><br /> <!-- whole numbers only -->
 		Category<br />
