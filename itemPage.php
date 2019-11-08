@@ -16,16 +16,20 @@
 					$num_items = count($lines);
 					$match = null;
 
-					for ($i = 0; $i < $num_items; $i++) {
+					for ($i = 0; $i < $num_items; $i++) 
+					{
 						$datas = explode(":", $lines[$i]); //split the line by colon		
+						
 						list($id, $_, $_, 
 							$_, $_, $_, $_, 
 							$_, $_, $_) = $datas;
 								
-						if ($id == $_SESSION["itemPage_id"]) {
+						if ($id == $_SESSION["itemPage_id"]) 
+						{
 							$match = $lines[$i];
 						}
 					}
+					
 					list($id, $itemname, $_, 
 						$price, $userid, $description_short, $description_long, 
 						$category, $stock, $return_policy) = explode(":", $match);

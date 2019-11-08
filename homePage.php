@@ -53,15 +53,18 @@
 		$num_items = count($lines);
 	
 		//do filtering first...	
-		if (!empty($itemname_get) || !empty($filter_get)) {
-			for ($i = 0; $i < $num_items; $i++) {
+		if (!empty($itemname_get) || !empty($filter_get)) 
+		{
+			for ($i = 0; $i < $num_items; $i++) 
+			{
 				$datas = explode(":", $lines[$i]); //split the line by colon		
 				list($_, $itemname, $_, 
 					$_, $_, $description, $_, 
 					$category, $_, $_) = $datas;
 					
 				//unset lines that DON'T meet search criteria!
-				if (!empty($filter_get) && $category != $filter_get) {
+				if (!empty($filter_get) && $category != $filter_get) 
+				{
 					unset($lines[$i]); // <- doesn't require re-indexing!
 				}
 				if (!empty($itemname_get) && //if search query not found anywhere in...
@@ -73,12 +76,15 @@
 			}		
 		}
 		//also do price range filtering if valid data for it supplied	
-		if (!empty($price_min_get) && !empty($price_max_get)) { //html5 validation ensures numeric input...
+		if (!empty($price_min_get) && !empty($price_max_get)) 
+		{ //html5 validation ensures numeric input...
 			if ($price_min_get > $price_max_get) { //make sure low boundary does not exceed high boundary
 				print ("Couldn't price_min_get > price_max_get!");
 			}
-			else {
-				for ($i = 0; $i < $num_items; $i++) {
+			else 
+			{
+				for ($i = 0; $i < $num_items; $i++) 
+				{
 					$datas = explode(":", $lines[$i]); //split the line by colon		
 					list($_, $_, $_, 
 						$price, $_, $_, $_, 
@@ -112,7 +118,8 @@
 			//"|": delimiter being used to separate appended text from rest of string,
 			//such as: "Cheryl|1:Cheryl:10-10-1992:F", where "1:Cheryl:10-10-1992:F" is
 			//the base string.
-			for ($i = 0; $i < $num_items; $i++) {
+			for ($i = 0; $i < $num_items; $i++) 
+			{
 				$datas = explode(":", $lines[$i]); //split string by delimiter, again
 					
 				//append the data we want to sort by to the front of the string
@@ -123,19 +130,22 @@
 			$numeric = is_numeric($datas[$sort_column]);
 			
 			//determine also if looking at text or numeric values, to ensure use of the right sort method
-			if ($order == "Ascending") { //taking into account both ascending and descending sorting...			
+			if ($order == "Ascending") 
+			{ //taking into account both ascending and descending sorting...			
 				if ($numeric === False)
 					sort($lines);
 				else
 					sort($lines, SORT_NUMERIC);
 			}
-			else if ($order == "Descending") {
+			else if ($order == "Descending") 
+			{
 				if ($numeric === False)
 					rsort($lines);
 				else
 					rsort($lines, SORT_NUMERIC);
 			}				
-			for ($i = 0; $i < $num_items; $i++) {
+			for ($i = 0; $i < $num_items; $i++) 
+			{
 				//finally, take off the appended text in front of each line of text, to
 				//return each of the extracted lines to their original state
 				$lines[$i] = substr($lines[$i], strpos($lines[$i], "|") + 1, strlen($lines[$i]));
@@ -146,11 +156,12 @@
 		{
 			$datas = explode(":", $lines[$i]); //split the line by colon		
 			list($itemid, $itemname, $photo, 
-			 $price, $userid_fk, $description_short, $description_long,
-			 $category, $quantity, $returnpolicy) = $datas;
+			$price, $userid_fk, $description_short, $description_long,
+			$category, $quantity, $returnpolicy) = $datas;
 
 			//unset array indices from the filtering earlier -> data in them becomes EMPTY, thus not shown
-			if (!empty($itemid)) { 
+			if (!empty($itemid)) 
+			{ 
 				print 
 				('<div class="col-md-4">
 					<div class="card mb-4 shadow-sm">
