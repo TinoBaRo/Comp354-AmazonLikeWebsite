@@ -41,7 +41,7 @@
 			have at least one letter and at least one digit
 		</small></p>
 
-		<button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+		<button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
 
 	</form>
 

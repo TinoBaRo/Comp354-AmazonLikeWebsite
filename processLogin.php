@@ -94,7 +94,7 @@
 		
 		echo "<h4> The user logged in before, but the password is incorrect. </h4>";
 
-		echo " <h4> Please, try entering the correct password again. </h4>";
+		echo "<h4> Enter password again. </h4>";
 		
 		//echo $userPass . " didn't match " . $linePass;
 
@@ -125,11 +125,12 @@
 		unset($_SESSION);
 		session_destroy();
 
-		echo "<div align=\"right\">";
+		//echo "<div align=\"right\">";
+		echo "<h4>Username does not exist. Enter the correct username or sign up.</h4>";
 
-		echo "The user name does not exist. Please enter the right user name or sign up.";
+		//echo "The user name does not exist. Please enter the right user name or sign up.";
 
-		echo "</div>";
+		//echo "</div>";
 
 		require("loginPage.php");
 	}
