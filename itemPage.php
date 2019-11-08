@@ -12,28 +12,48 @@
 
 				<?php
 					//lookup
+					//getting data from the database
 					$lines = file("database/items.txt", FILE_IGNORE_NEW_LINES);
 					$num_items = count($lines);
 					$match = null;
 
 					for ($i = 0; $i < $num_items; $i++) 
 					{
+						// itemID:itemName:index.jpg:price:userID:shortDescrip:longDescription:category:numberInStock:returnPolicy
 						$datas = explode(":", $lines[$i]); //split the line by colon		
 						
+						// assign array values to variables: interested in $id
 						list($id, $_, $_, 
 							$_, $_, $_, $_, 
 							$_, $_, $_) = $datas;
 								
 						if ($id == $_SESSION["itemPage_id"]) 
 						{
+							// Initializing: $match
 							$match = $lines[$i];
 						}
 					}
 					
-					list($id, $itemname, $_, 
+					list($id, $itemname, $itemimage, 
 						$price, $userid, $description_short, $description_long, 
 						$category, $stock, $return_policy) = explode(":", $match);
-				
+
+
+					// STORE ITEM: gonna start with assuming only 1 item...
+					// itemID:itemName:index.jpg:price:userID:shortDescrip:longDescription:category:numberInStock:returnPolicy
+					// 1:Mario Hat:1.jpg:14.99:1:Hat that Mario wears:LongDescription:Clothing:3:none
+					$_SESSION['checkoutItem']['itemId'] = $id;
+					$_SESSION['checkoutItem']['itemName'] = $itemname;
+					$_SESSION['checkoutItem']['itemImage'] = $itemimage;
+					$_SESSION['checkoutItem']['itemPrice'] = $price;
+					$_SESSION['checkoutItem']['userId'] = $userid;
+					$_SESSION['checkoutItem']['shortDescription'] = $description_short;
+					$_SESSION['checkoutItem']['longDescription'] = $description_long;
+					$_SESSION['checkoutItem']['category'] = $category;
+					$_SESSION['checkoutItem']['numberStock'] = $stock;
+					$_SESSION['checkoutItem']['returnPolicy'] = $return_policy;
+
+
 					print ('<img src="images/'.$id.'.jpg" class="img-fluid">');
 				?>
 
@@ -66,14 +86,13 @@
 
 
 					<div class="m-2 h-50">
-						<form method="" action="">
+						<form method="POST" action="checkout.php">
 							<div class="btn-group">									
 								<input type="submit" name="purchase" class="btn btn-sm btn-outline-secondary" value="Purchase Item">
 							</div>
 						</form>
 					</div>
 				</div>
-
 
 
 			</div>

@@ -1,3 +1,8 @@
+
+<?php  
+	session_start();
+?>
+
 <!DOCTYPE html>
 <!-- CREDIT TO BOOTSTRAP FOR GENERAL TEMPLATE -->
 
@@ -20,6 +25,7 @@
 	</form>
 </div>
 
-</body>
 
+<!-- don't need the other footer -->
+ 	</body>
 </html>
