@@ -31,7 +31,7 @@
 			<input class="form-control" type="text" name="address" required/>
 
 			<label><strong>E-mail</strong></label>
-			<input class="form-control" type="text" name="email" required/>
+			<input class="form-control" type="email" name="email" required/>
 
    		</div>
 
