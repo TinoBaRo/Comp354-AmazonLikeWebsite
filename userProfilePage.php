@@ -18,7 +18,7 @@
 		?>
 
 		<!-- default avatar photo -->
-		<img src="userPhoto.png" height="200" width="200">
+		<img src="images/userPhoto.png" height="200" width="200">
 
 		<!-- dynamic information (has to be read from the database) -->
 		<?php
@@ -29,8 +29,8 @@
 			$email;
 
 			// read and store
-			$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
-			$lineContents = file("loginData.txt"); // Each array element contains a line from the file
+			$myfile = fopen("database/users.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+			$lineContents = file("database/users.txt"); // Each array element contains a line from the file
 			$length = count($lineContents);
 			fclose($myfile);
 
@@ -40,11 +40,11 @@
 			{ 
 				$line = explode(':', $lineContents[$i] ); // iterates every line
 				
-				$userName = $line[0];
-				$firstName = $line[2];
-				$lastName = $line[3];
-				$address = $line[4];
-				$email = $line[5];
+				$userName = $line[1];
+				$firstName = $line[3];
+				$lastName = $line[4];
+				$address = $line[5];
+				$email = $line[6];
 
 				// match the user that is currently in active session
 				if (strcmp($userName, $_SESSION['username']) == 0) // found the user we were looking for

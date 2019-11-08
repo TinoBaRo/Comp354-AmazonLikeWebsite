@@ -24,28 +24,52 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  	
 		  	<a class="navbar-brand" href="homePage.php">
-		  		<img src="logo354TheStars.png" height="50" width="110"> <!-- Logo Picture -->
+		  		<img src="images/logo354TheStars.png" height="50" width="110"> <!-- Logo Picture -->
 		  	</a>
-
+			
+		<form method="GET" action="<?=$_SERVER['PHP_SELF'];?>">
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
 			    <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			        Categories
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          <a class="dropdown-item" href="#">Category 1</a>
-			          <a class="dropdown-item" href="#">Category 2</a>
-			        </div>
+					<select name="filter">
+						<option value="" selected disabled hidden>Categories</option>
+						<option value="Books">Books</option>
+						<option value="Clothing">Clothing</option>
+						<option value="Collectibles">Collectibles</option>
+						<option value="Electronics">Electronics</option>
+						<option value="Fashion Accessories">Fashion Accessories</option>
+						<option value="Hardware Supplies">Hardware Supplies</option>
+						<option value="Health & Care">Health & Care</option>
+						<option value="Household Products">Household Products</option>
+						<option value="Instruments">Instruments</option>
+						<option value="Music">Music</option>
+						<option value="Sports">Sports</option>
+						<option value="Toys">Toys</option>
+						<option value="Vehicles">Vehicles</option>
+						<option value="Video Games">Video Games</option>
+					</select>
 			    </li>  	
 		    </ul>
     		
+			<!-- search bar -->
+			&nbsp;&nbsp;&nbsp;
+			Search for:&nbsp;
+			<input name="itemname" type="text" />
+			&nbsp;&nbsp;&nbsp;
+			Price Range
+			$<input type="number" name="price_min" step="0.01" style="width: 75px;" ></input> -
+			$<input type="number" name="price_max" step="0.01" style="width: 75px;" ></input>
+			&nbsp;&nbsp;&nbsp;
+			<input type="submit" value="Search" />
+			
     		<!-- Important: show the name of the user name that is logged in (all the time, so must be on the header) -->
     		<!-- Conditions: showing Login and Signup buttons, or Logout button, depending on user logged in or not logged in -->
     		<?php  
-    			// brings the data from active session here, or starts a session with no data
+			    error_reporting(0);
+			
+    			// brings the data from active session here, or starts a session with no data			
     			session_start();
-
+				
     			if($_SESSION['username'] != null)
     			{
     				echo "Logged in as \"" . $_SESSION['username'] . "\"";
@@ -67,10 +91,11 @@
 	    	 				<a class=\"nav-link\" href=\"signUpPage.php\">Sign up</a>
 			    			</form>";
     			}
-			    
+
 		    ?>
 
 		</div>
+		</form>
 
 		</nav>
 
