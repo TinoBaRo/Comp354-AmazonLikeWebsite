@@ -30,7 +30,7 @@
 			<label><strong>Address</strong></label>
 			<input class="form-control" type="text" name="address" required/>
 
-			<label><strong>E-mail</strong></label>
+			<label><strong>Email</strong></label>
 			<input class="form-control" type="email" name="email" required/>
 
    		</div>
