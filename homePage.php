@@ -142,7 +142,8 @@
 			}
 		}
 
-		for ($i = 0; $i < $num_items; $i++) {
+		for ($i = 0; $i < $num_items; $i++) 
+		{
 			$datas = explode(":", $lines[$i]); //split the line by colon		
 			list($itemid, $itemname, $photo, 
 			 $price, $userid_fk, $description_short, $description_long,
@@ -156,20 +157,23 @@
 						<div class="card-body">
 							<b class="card-text">'.$itemname.'</b>
 						</div>
+
 						<img src="images/'.$itemid.'.jpg" height="300">
+
 						<div class="card-body">
 							<p class="card-text">'.$description_short.'</p>
 							<p class="card-text">'.$category.'</p>
 							<div class="d-flex justify-content-between align-items-center">
-							<form method="POST" name="itemPage" action="homePage.php">
-								<div class="btn-group">									
-									<input type="submit" name="view" id="'.$itemid.'" class="btn btn-sm btn-outline-secondary" value="View">
-									<input type="submit" name="edit" id="'.$itemid.'" class="btn btn-sm btn-outline-secondary" value="Edit">	
-									<input type="hidden" name="id" value="'.$itemid.'" />
-								</div>
-							</form>
+								<form method="POST" name="itemPage" action="homePage.php">
+									<div class="btn-group">									
+										<input type="submit" name="view" id="'.$itemid.'" class="btn btn-sm btn-outline-secondary" value="View Item / Purchase Item">
+										<input type="hidden" name="id" value="'.$itemid.'" />
+									</div>
+								</form>
+
 							<small class="text-muted">$'.$price.'</small>
 							</div>
+
 						</div>
 					</div>
 				</div>');
@@ -190,13 +194,15 @@
 			}
 		}
 		
-		if (isset($_POST['id'])) {
+		if (isset($_POST['id'])) 
+		{
 			$_SESSION["itemPage_id"] = $_POST['id'];
 			print ("<script>location.href='itemPage.php';</script>"); //redirect to itemPage.php
 		}
 		
 		?>
-	      </div>
+
+	    </div>
 	    </div>
 	</div>
 

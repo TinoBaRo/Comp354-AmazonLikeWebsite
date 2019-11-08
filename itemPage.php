@@ -52,13 +52,26 @@
 						<p><?php print ($description_long); ?></p>
 					</div>
 				</div>
+
 				<div class="col-md-3">
 					<div class="card m-2 h-50">
 							<h4> Price: </h4>
 							<label>$<?php print ($price); ?></label>
 							<h4><?php print ($stock); ?> in stock</h4>
 					</div>
+
+
+					<div class="m-2 h-50">
+						<form method="" action="">
+							<div class="btn-group">									
+								<input type="submit" name="purchase" class="btn btn-sm btn-outline-secondary" value="Purchase Item">
+							</div>
+						</form>
+					</div>
 				</div>
+
+
+
 			</div>
 
 		</div>
