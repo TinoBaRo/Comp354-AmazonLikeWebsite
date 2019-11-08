@@ -10,5 +10,6 @@
 	session_destroy();
 
 	// then redirect to home page
-	require("homePage.php");
+	//require("homePage.php");
+	header("location: homePage.php");	
 ?>

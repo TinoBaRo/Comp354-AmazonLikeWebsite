@@ -2,6 +2,8 @@
 <!-- This file processes the login Form (from loginPage.php), and then does an action --> 
 
 <?php
+	error_reporting(0);
+
 	// start a session when someone logs in
 	// also initialize 2 session variables: username and password
 	//session_unset();
@@ -20,7 +22,6 @@
 	// holder variables we will use for the processing
 	$userName = $_POST['userName'];
 	$userPass = $_POST['password'];
-
 
 	if( preg_match($reg_name, $userName) == true )
 	{
@@ -59,10 +60,9 @@
 	{ 
 		$line = explode(':', $lineContents[$i] );
 
-		$lineName = $line[0];
-
-		$linePass = $line[1];
-
+		$lineId = $line[0];
+		$lineName = $line[1];
+		$linePass = $line[2];
 
 		// userName is matched: the user has been here before
 		if( strcmp($userName, $lineName) == 0 )
@@ -77,7 +77,7 @@
 			if( strcmp($userPass, $linePass) == 0 )
 			{
 				$correctPassword = true;
-				//echo "Set $correctPassword to true";
+				$_SESSION['userid'] = $lineId; // <- user's id also sent to session var
 			}
 
 			// we found the logged value
@@ -89,9 +89,12 @@
 	// make the user try again to enter the correct password
 	if( ($loggedBefore == true) && ($correctPassword == false) )
 	{
+		unset($_SESSION);
+		session_destroy();
+		
 		echo "<h4> The user logged in before, but the password is incorrect. </h4>";
 
-		echo " <h4> Please, try entering the correct password again. </h4>";
+		echo "<h4> Enter password again. </h4>";
 		
 		//echo $userPass . " didn't match " . $linePass;
 
@@ -112,7 +115,8 @@
 
 		echo "</div>";
 
-		require("homePage.php");
+		//require("homePage.php");
+		header("location: homePage.php");
 	}
 
 	// if the user has never been here before: he needs to sign up first or enter the correct username
@@ -121,11 +125,12 @@
 		unset($_SESSION);
 		session_destroy();
 
-		echo "<div align=\"right\">";
+		//echo "<div align=\"right\">";
+		echo "<h4>Username does not exist. Enter the correct username or sign up.</h4>";
 
-		echo "The user name does not exist. Please enter the right user name or sign up.";
+		//echo "The user name does not exist. Please enter the right user name or sign up.";
 
-		echo "</div>";
+		//echo "</div>";
 
 		require("loginPage.php");
 	}
