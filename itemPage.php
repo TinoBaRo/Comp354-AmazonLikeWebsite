@@ -2,6 +2,7 @@
 
 <?php  
 	require("header.php");
+	session_start();
 ?>
 		<div class="card m-2 bg-light">
 			
@@ -84,14 +85,31 @@
 							<h4><?php print ($stock); ?> in stock</h4>
 					</div>
 
-
-					<div class="m-2 h-50">
-						<form method="POST" action="checkout.php">
-							<div class="btn-group">									
-								<input type="submit" name="purchase" class="btn btn-sm btn-outline-secondary" value="Purchase Item">
+					<!-- Can purchase item, only if logged in -->
+					<?php  
+						if( isset($_SESSION['username']))
+						{
+							echo "
+							<div class=\"m-2 h-50\">
+								<form method=\"POST\" action=\"checkout.php\">
+									<div class=\"btn-group\">									
+										<input type=\"submit\" name=\"purchase\" class=\"btn btn-sm btn-outline-secondary\" value=\"Purchase Item\">
+									</div>
+								</form>
 							</div>
-						</form>
-					</div>
+							";
+						}
+						else
+							echo "
+							<div class=\"m-2 h-50\">
+								<h5>
+								To purchase the item, you must be logged in.
+								</h5>
+							</div>
+						";
+					?>
+					
+
 				</div>
 
 
