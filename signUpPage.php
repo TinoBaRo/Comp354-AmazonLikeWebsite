@@ -31,7 +31,7 @@
 			<input class="form-control" type="text" name="address" required/>
 
 			<label><strong>E-mail</strong></label>
-			<input class="form-control" type="text" name="email" required/>
+			<input class="form-control" type="email" name="email" required/>
 
    		</div>
 
@@ -41,7 +41,7 @@
 			have at least one letter and at least one digit
 		</small></p>
 
-		<button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+		<button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
 
 	</form>
 

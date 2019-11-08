@@ -86,12 +86,21 @@
 			//prompt new user password doesn't meet requirements
 			if ($pass_long_enough === false) {
 				$_SESSION['signUpErrorMsg'] .= "Password must contain at least ".$min_pass_length." characters.<br />";
+				echo "<div>";
+				echo "<h4> Password must contain at least ".$min_pass_length." characters.";
+				echo "</div>";
 			}
 			if ($pass_has_letter === false) {
 				$_SESSION['signUpErrorMsg'] .= "Password must contain at least 1 letter.<br />";
+				echo "<div>";
+				echo "<h4> Password must contain at least 1 letter.";
+				echo "</div>";
 			}
 			if ($pass_has_digit === false) {
 				$_SESSION['signUpErrorMsg'] .= "Password must contain at least 1 number.<br />";
+				echo "<div>";
+				echo "<h4> Password must contain at least 1 number.";
+				echo "</div>";
 			}
 			
 			//unset this data if failing to register
@@ -128,7 +137,7 @@
 
 		echo "<div>";
 
-		echo "<h4> The user already exists, please log in or sign up with a different user name .</h4>";
+		echo "<h4> Username already exists, please log in or sign up with a different username .</h4>";
 
 		echo "</div>";
 
