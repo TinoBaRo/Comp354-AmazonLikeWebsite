@@ -72,7 +72,7 @@
                     
                         echo "<h5>The item is out of stock. Sorry for the inconvenience</h5> 
                         <br/>
-                        <a href=\"homePage.php\" class=\"card-link\">Back Home</a>
+                        <a href=\"homePage.php\" class=\"card-link\">Return Home</a>
                         ";
                         
                     }
