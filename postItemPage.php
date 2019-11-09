@@ -1,8 +1,8 @@
 
 <!-- postItemPage.php -->
-
 <style>
-div#pad_left {
+div#pad_left 
+{
 	padding-left: 20px;
 }
 </style>
@@ -85,10 +85,11 @@ div#pad_left {
 		fwrite($items_table, $new_item_line);
 		fclose($items_table);
 
-		print ('Item posting for '.$itemname.' created successfully!<br />');
-		print ("<form method='POST' action=".$_SERVER['PHP_SELF'].">
-		<input type='submit' name='index' value='Back to homepage' />
-		</form><br />");
+		print ("<div class=\"mx-auto\" style=\"width: 800px;\"> Item posting for '.$itemname.' created successfully!<br />");
+		print ("
+		<a href=\"homePage.php\" class=\"btn btn-primary\" role=\"button\">Return Home</a>
+		</div>");
+
 		die();
 	}
 
@@ -97,7 +98,8 @@ div#pad_left {
 	if(isset($_SESSION['username']) && !empty($_SESSION['password'])) {
 		$token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
 
-  		if($isLoggedIn) {
+  		if($isLoggedIn) 
+  		{
 			$userid = $_SESSION['userid'];
 		}
 	}
@@ -108,45 +110,48 @@ div#pad_left {
 
 <hr>
 
-<div id="pad_left">
-<body>
-	<form method='POST' enctype="multipart/form-data">
-		Item Name<br />
-		<input type="text" name="itemname" required></input><br />
-		Price ($)<br />
-		<input type="number" name="price" step="0.01" min="0.01" required></input><br />
-		Stock<br />
-		<input type="number" name="stock" step="1" min="1" required><br /> <!-- whole numbers only -->
-		Category<br />
-		<select name="filter">
-			<option value="">-select a category-</option>
-			<option value="Books">Books</option>
-			<option value="Clothing">Clothing</option>
-			<option value="Collectibles">Collectibles</option>
-			<option value="Electronics">Electronics</option>
-			<option value="Fashion Accessories">Fashion Accessories</option>
-			<option value="Hardware Supplies">Hardware Supplies</option>
-			<option value="Health & Care">Health & Care</option>
-			<option value="Household Products">Household Products</option>
-			<option value="Instruments">Instruments</option>
-			<option value="Music">Music</option>
-			<option value="Sports">Sports</option>
-			<option value="Toys">Toys</option>
-			<option value="Vehicles">Vehicles</option>
-			<option value="Video Games">Video Games</option>
-		</select><br />
-		Upload Photo<br />
-		<input type="file" name="file" accept="image/*"><br />
-		Short Description<br />
-		<textarea rows="4" cols="50" name="description_short"></textarea><br />
-		Full Description<br />
-		<textarea rows="12" cols="50" name="description_long"></textarea><br />
-		Return Policy<br />
-		<textarea rows="6" cols="50" name="return_policy"></textarea><br />
-		<br />
-		<input type="submit" name="sell" value="Post" />
-	</form>
-	<br />
-
-</body>
+<div class="mx-auto" style="width: 800px;">
+		<form method='POST' enctype="multipart/form-data">
+			Item Name<br />
+			<input type="text" name="itemname" required></input><br />
+			Price ($)<br />
+			<input type="number" name="price" step="0.01" min="0.01" required></input><br />
+			Stock<br />
+			<input type="number" name="stock" step="1" min="1" required><br /> <!-- whole numbers only -->
+			Category<br />
+			<select name="filter">
+				<option value="">-select a category-</option>
+				<option value="Books">Books</option>
+				<option value="Clothing">Clothing</option>
+				<option value="Collectibles">Collectibles</option>
+				<option value="Electronics">Electronics</option>
+				<option value="Fashion Accessories">Fashion Accessories</option>
+				<option value="Hardware Supplies">Hardware Supplies</option>
+				<option value="Health & Care">Health & Care</option>
+				<option value="Household Products">Household Products</option>
+				<option value="Instruments">Instruments</option>
+				<option value="Music">Music</option>
+				<option value="Sports">Sports</option>
+				<option value="Toys">Toys</option>
+				<option value="Vehicles">Vehicles</option>
+				<option value="Video Games">Video Games</option>
+			</select><br />
+			Upload Photo<br />
+			<input type="file" name="file" accept="image/*"><br />
+			Short Description<br />
+			<textarea rows="4" cols="50" name="description_short"></textarea><br />
+			Full Description<br />
+			<textarea rows="12" cols="50" name="description_long"></textarea><br />
+			Return Policy<br />
+			<textarea rows="6" cols="50" name="return_policy"></textarea><br />
+			<br />
+			<input type="submit" name="sell" value="Post" />
+		</form>
+		<br/>
 </div>
+
+
+<!-- don't need the other footer -->
+ 	</body>
+</html>
+
