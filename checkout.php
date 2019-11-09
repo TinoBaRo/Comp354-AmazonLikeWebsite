@@ -80,7 +80,7 @@
                     {
                         echo "<h5>In stock</h5>
                         <div>
-                            <a href=\"paypal.html\" class=\"btn btn-primary\" role=\"button\">Purchase Item</a>
+                            <a href=\"paypal.php\" class=\"btn btn-primary\" role=\"button\">Purchase Item</a>
                             <br/>
                             <br/>
                             <a href=\"homePage.php\" class=\"btn btn-primary\" role=\"button\">Cancel</a>
