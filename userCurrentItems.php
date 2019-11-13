@@ -2,23 +2,26 @@
 <?php 
 	// get session data
 	session_start();
+        require("header.php");
 
-	require("header.php");
 
-
-	// read from database: userName:description:category:price:quantity:imageNameAndPath
-	$myfile = fopen("listedItemsData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+        // read from database: id:name:image:price:userid:shortdescription:longdescription:category:quantity:refund
+	$myfile = fopen("database\items.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
         
         while(!feof($myfile)) {
         $items = explode (":", fgets($myfile));
-        if ($items[0] == $_SESSION['username']){
-        $srcc = "listedImagesFolder/$items[5]";
-        echo "<br><img src=$srcc height=300 width=300/><br>$items[1], $items[2], $items[3] CAD, $items[4] left.</br>";
+        if ($items[4] == $_SESSION['userid']){
+        $srcc = "images/$items[2]";
+        echo "<br><img src=$srcc height=300 width=300/><br>$items[1]<br> $items[5]<br>$items[3] CAD<br>$items[8] left.</br>";
         }
         
         }
 
 	fclose($myfile);
+	
+
+
+	
 ?>
 
 <div>
