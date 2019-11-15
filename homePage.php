@@ -70,7 +70,7 @@
 				}
 				if (!empty($itemname_get) && //if search query not found anywhere in...
 					!preg_match("/{$itemname_get}/i", $itemname) && //the item name
-					!preg_match("/{$itemname_get}/i", $description) && //the item's description
+					//!preg_match("/{$itemname_get}/i", $description) && //the item's description
 					!preg_match("/{$itemname_get}/i", $category)) { //or the item's category...
 					unset($lines[$i]); // <- doesn't require re-indexing!
 				}
@@ -153,6 +153,8 @@
 			}
 		}
 
+		$matching_items = 0;
+		
 		for ($i = 0; $i < $num_items; $i++) 
 		{
 			$datas = explode(":", $lines[$i]); //split the line by colon		
@@ -163,6 +165,8 @@
 			//unset array indices from the filtering earlier -> data in them becomes EMPTY, thus not shown
 			if (!empty($itemid)) 
 			{ 
+				$matching_items += 1;
+				
 				$rating_stars = getRating($itemid);
 				
 				if ($rating_stars > 0) { //calculate rating out of 5 only if necessary
@@ -198,6 +202,15 @@
 						</div>
 					</div>
 				</div>');
+			}
+		}
+		//if we found nothing with the given search query
+		if ($matching_items === 0) {
+			if (!empty($itemname_get)) {
+				print ("<h3>No results found for ".$itemname_get.".</h3>");
+			}
+			else if (!empty($filter_get)) {
+				print ("<h3>No items found in ".$filter_get." category.</h3>");
 			}
 		}
 		
