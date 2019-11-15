@@ -2,6 +2,7 @@
 <!-- This file processes the login Form (from loginPage.php), and then does an action --> 
 
 <?php
+	include("salt.php");
 	error_reporting(0);
 
 	// start a session when someone logs in
@@ -43,9 +44,9 @@
 	// if the user enters a non existing user, tell him to sign-up or enter the correct user name (NEED TO DO THIS)
 	$loggedBefore = false;
 
-	$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+	$myfile = fopen("database/users.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
 
-	$lineContents = file("loginData.txt");
+	$lineContents = file("database/users.txt");
 
 	$length = count($lineContents);
 
@@ -74,12 +75,11 @@
 			$lineName = trim($lineName);
 			$linePass = trim($linePass);
 
-			if( strcmp($userPass, $linePass) == 0 )
+			if (hash_equals($linePass, crypt($userPass, '$2y$07$'.$salt.'$')))
 			{
 				$correctPassword = true;
 				$_SESSION['userid'] = $lineId; // <- user's id also sent to session var
 			}
-
 			// we found the logged value
 			break;
 		}
@@ -89,9 +89,6 @@
 	// make the user try again to enter the correct password
 	if( ($loggedBefore == true) && ($correctPassword == false) )
 	{
-		unset($_SESSION);
-		session_destroy();
-		
 		echo "<h4> The user logged in before, but the password is incorrect. </h4>";
 
 		echo "<h4> Enter password again. </h4>";

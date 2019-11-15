@@ -35,7 +35,7 @@
 
 
 <?php  
-	// UPDATE 'itemst.txt' database since the user went through PAYPAL
+	// UPDATE 'items.txt' database since the user went through PAYPAL
 	// ...
 
 	// READ

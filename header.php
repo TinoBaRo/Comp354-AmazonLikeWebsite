@@ -31,27 +31,6 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
 			    <li class="nav-item dropdown">
-					<!--
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			        Categories
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown" name="filter">
-			          <a class="dropdown-item" href="">Books</a>
-			          <a class="dropdown-item" href="">Clothing</a>
-					  <a class="dropdown-item" href="">Collectibles</a>
-					  <a class="dropdown-item" href="">Electronics</a>
-					  <a class="dropdown-item" href="">Fashion Accessories</a>
-					  <a class="dropdown-item" href="">Hardware Supplies</a>
-					  <a class="dropdown-item" href="">Health & Care</a>
-					  <a class="dropdown-item" href="">Household Products</a>
-					  <a class="dropdown-item" href="">Instruments</a>
-					  <a class="dropdown-item" href="">Music</a>
-					  <a class="dropdown-item" href="">Sports</a>
-					  <a class="dropdown-item" href="">Toys</a>
-					  <a class="dropdown-item" href="">Vehicles</a>
-					  <a class="dropdown-item" href="">Video Games</a>
-			        </div>
-					-->
 					<select name="filter">
 						<option value="" selected disabled hidden>Categories</option>
 						<option value="Books">Books</option>
@@ -74,7 +53,7 @@
     		
 			<!-- search bar -->
 			&nbsp;&nbsp;&nbsp;
-			Search for:
+			Search for:&nbsp;
 			<input name="itemname" type="text" />
 			&nbsp;&nbsp;&nbsp;
 			Price Range
@@ -93,7 +72,7 @@
 				
     			if($_SESSION['username'] != null)
     			{
-    				echo "Logged in as \"" . $_SESSION['username'] . "\" (" . $_SESSION['userid'] . ")";
+    				echo "Logged in as \"" . $_SESSION['username'] . "\"";
 
     				// if logged in, user will be able to logout
     				echo "<form class=\"form-inline my-2 my-lg-0\">

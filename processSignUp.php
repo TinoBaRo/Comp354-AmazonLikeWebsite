@@ -2,6 +2,7 @@
 <!-- This file processes the Sign Up Form (from signUpPage.php), and then does an action --> 
 
 <?php
+	include("salt.php");
 	error_reporting(0);
 
 	$min_pass_length = 6;
@@ -32,15 +33,13 @@
 	// check if the user has already signed up before
 	$loggedBefore = false;
 
-	$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+	$myfile = fopen("database/users.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
 
-	$lineContents = file("loginData.txt");
+	$lineContents = file("database/users.txt");
 
 	$length = count($lineContents);
 
 	fclose($myfile);
-
-	//print_r($lineContents);
 
 	// READ
 	for ($i=0; $i < $length; $i++) 
@@ -56,6 +55,8 @@
 			// echo "The user has logged in before.";
 			$loggedBefore = true;
 		}
+		
+		$lastId = $line[0]; //will give lastId the ID number of the newest user in table
 	}
 
 	// SIGN-UP CASE
@@ -120,10 +121,15 @@
 			echo "</div>";
 
 			require("homePage.php");
-
-			// write it to: myFile = loginData.txt
-			$myfile = fopen("loginData.txt", "a"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
-			$text = ($length) . ":" . $userName . ":" . $userPass . ":" . $firstName . ":" . $lastName . ":" . $address . ":" . $email . PHP_EOL;
+			
+			// encrypt password, then write it into DB:
+			//print ("salt: ".$salt."<br />");
+			$userPass = crypt($userPass, '$2y$07$'.$salt.'$');
+			//print ("encrypted pass: ".$userPass."<br />");
+			
+			// write it to: myFile = database/users.txt
+			$myfile = fopen("database/users.txt", "a"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+			$text = ($lastId+1) . ":" . $userName . ":" . $userPass . ":" . $firstName . ":" . $lastName . ":" . $address . ":" . $email . PHP_EOL;
 			fwrite($myfile, $text);
 			fclose($myfile);			
 		}
