@@ -1,8 +1,8 @@
 
 
-    <div id="footer">
+ <!--    <div id="footer">
 
-    <nav aria-label="Page navigation example">
+   <nav aria-label="Page navigation example">
       <ul class="pagination fixed-bottom justify-content-center">
         <li class="page-item disabled">
 	        <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -25,7 +25,7 @@
     <a href="#" class="badge bottom badge-secondary" style="float:right;margin-bottom:-10px;"></span>>FAQ</a>
     <a href="#" class="badge bottom badge-danger">Help</a>
     <a href="#" class="badge bottom badge-success">About</a>
-    <a href="#" class="badge bottom badge-info">Location</a>
+    <a href="#" class="badge bottom badge-info">Location</a> -->
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
