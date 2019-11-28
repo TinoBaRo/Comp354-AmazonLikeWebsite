@@ -30,8 +30,8 @@
 		<form method="GET" action="<?=$_SERVER['PHP_SELF'];?>">
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
-			    <li class="nav-item dropdown">
-					<select name="filter">
+			    <li class="nav-item dropdown">			    	
+					<select class="form-control" name="filter">
 						<option value="" selected disabled hidden>Categories</option>
 						<option value="Books">Books</option>
 						<option value="Clothing">Clothing</option>
@@ -54,13 +54,13 @@
 			<!-- search bar -->
 			&nbsp;&nbsp;&nbsp;
 			Search for:&nbsp;
-			<input name="itemname" type="text" />
+			<input class="form-control" style="width: auto" name="itemname" type="text" />
 			&nbsp;&nbsp;&nbsp;
-			Price Range
-			$<input type="number" name="price_min" step="0.01" style="width: 75px;" ></input> -
-			$<input type="number" name="price_max" step="0.01" style="width: 75px;" ></input>
+			Price Range:&nbsp;
+			<input type="number" class="form-control" style="max-width: 100px" name="price_min" step="0.01" placeholder="Min"></input> &nbsp;-&nbsp;
+			<input type="number" class="form-control" style="max-width: 100px" name="price_max" step="0.01" placeholder="Max"></input>
 			&nbsp;&nbsp;&nbsp;
-			<input type="submit" value="Search" />
+			<input type="submit" class="btn btn-sm btn-outline-secondary" value="Search" />
 			
     		<!-- Important: show the name of the user name that is logged in (all the time, so must be on the header) -->
     		<!-- Conditions: showing Login and Signup buttons, or Logout button, depending on user logged in or not logged in -->
@@ -72,16 +72,16 @@
 				
     			if($_SESSION['username'] != null)
     			{
-    				echo "Logged in as \"" . $_SESSION['username'] . "\"";
+    				//echo "Logged in as \"" . $_SESSION['username'] . "\"";
 
     				// if logged in, user will be able to logout
     				echo "<form class=\"form-inline my-2 my-lg-0\">
-							<a class=\"nav-link\" href=\"processLogout.php\">Logout</a>
+							<a class=\"nav-link float-right\" href=\"processLogout.php\">Logout</a>
 	  						</form> ";
 
 	  				// if logged in, user will be able to go to his/her profile page
 	  				echo "<form class=\"form-inline my-2 my-lg-0\">
-							<a class=\"nav-link\" href=\"userProfilePage.php\">User Profile</a>
+							<a class=\"nav-link float-right\" href=\"userProfilePage.php\">" . $_SESSION['username'] . "'s Profile</a>
 	  						</form> ";
     			}
     			else

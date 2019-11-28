@@ -16,23 +16,25 @@
 		<h3>Home Page</h3>
 	</p>		
 	<!-- sort -->
-	<form method="GET" action="<?=$_SERVER['PHP_SELF'];?>">
-		<label class="lab">Sort by:</label>
-		<select name="sort_by">
+	<form method="GET" class="form-inline" action="<?=$_SERVER['PHP_SELF'];?>">
+		<label class="lab">Sort by:&nbsp;</label>
+		<select class="form-control" style="max-width: 150px" name="sort_by">
 			<option value="Item Name">Item Name</option>
 			<option value="Description">Description</option>
 			<option value="Stock">Stock</option>
 			<option value="Category">Category</option>
 			<option value="Price">Price</option>
 			<option value="Rating">Rating</option>
-		</select>
-		<select name="order">
+		</select>&nbsp;
+		<select class="form-control" style="max-width: 150px" name="order">
 			<option value="Ascending">Ascending</option>
 			<option value="Descending">Descending</option>
 		</select>
-		<input type="submit" name="sort" value="Sort" />
+		&nbsp;&nbsp;
+		<input type="submit" class="btn btn-sm btn-outline-secondary" name="sort" value="Sort" />
 	</form>
 	</div>
+	<br/>
 
 	<main role="main">
 
@@ -154,8 +156,26 @@
 		}
 
 		$matching_items = 0;
+
+		//pagination variables
+		$current_page = $_GET["current_page"]; 
+
+		// set current page to 1 if click on home page
+		if( $current_page == null) {
+			$current_page = 1;
+		}
+
+		// set previous, next and nb of pages
+		$previous_page = $current_page - 1;
+		$next_page = $current_page + 1;
+		$items_per_page = 6;
+		$num_page = ceil($num_items / $items_per_page);
 		
-		for ($i = 0; $i < $num_items; $i++) 
+		// set counter limit based on current page
+		$total_items_for_loop = ($current_page != $num_page ? $current_page * $items_per_page : $num_items);
+		//echo "<h4>" . $total_items_for_loop . "</h4>";
+
+		for ($i = ($current_page - 1) * $items_per_page; $i < $total_items_for_loop; $i++) 
 		{
 			$datas = explode(":", $lines[$i]); //split the line by colon		
 			list($itemid, $itemname, $photo, 
@@ -227,6 +247,30 @@
 	</div>
 
 	</main>
+
+	<!-- Pagination --> 
+	<ul class="pagination fixed-bottom justify-content-center">
+		<?php 
+		if($current_page > 1) { echo "<li class=\"page-item\"> <a class='page-link' href=\"?current_page=$previous_page\"> Previous </a> </li>"; } 
+		?>
+
+		<?php    
+ 		for ($counter = 1; $counter <= $num_page; $counter++) {
+ 			if ($counter == $current_page) {
+ 				echo "<li class='page-item active'><a class='page-link'>$counter</a></li>"; 
+         	}
+         	else {
+        		echo "<li class='page-item'><a class='page-link' href='?current_page=$counter'>$counter</a></li>";
+            }        
+		} ?>
+		
+		<?php	  
+		if($current_page < $num_page) { echo "<li class=\"page-item\"> <a class='page-link' href=\"?current_page=$next_page\"> Next </a> </li>"; } 
+		?>
+		 
+		<?php if($current_page < $num_page){ echo "<li class=\"page-item\"><a class='page-link' href='?current_page=$num_page'>Last &rsaquo;&rsaquo;</a></li>"; } ?>
+	</ul>	
+
 
 <?php
     require("footer.php");

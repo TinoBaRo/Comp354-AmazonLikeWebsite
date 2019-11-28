@@ -99,11 +99,27 @@
 
 				<div class="col-md-3">
 					<div class="card m-2 h-30">
-							<h4> Price: </h4>
+							<!--<h4> Price: </h4>
 							<label>$<?php print ($price); ?></label>
 							<h4> Seller: </h4>
 							<label><?php print ($seller); ?></label>
-							<h4><?php print ($stock); ?> in stock</h4>
+							<h4><?php print ($stock); ?> in stock</h4> -->
+						<div class="row">
+							<div class="col-md-6 pl-4">
+								<h4> Price: </h4>
+								<label>$<?php print ($price); ?></label>
+							</div>
+							<div class="col-md-6 text-right pr-4">
+								<h4> Stock: </h4>
+								<label><?php print ($stock); ?></label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 pl-4">
+								<h4> Seller: </h4>
+								<label><?php print ($seller); ?></label>
+							</div>
+						</div>
 					</div>
 					
 
@@ -122,7 +138,7 @@
 								<h6>Leave a review!</h6>
 								<form method=\"POST\" action=\"itemPage.php\">
 									<div> <!--have all this stuff on one line -->
-										<select name=\"rating\" style=\"width: 75px;\">
+										<select class=\"form-control\" style=\"display: inline-block;max-width:100px;\"name=\"rating\" style=\"width: 75px;\">
 											<option value=\"\" selected disabled hidden>Stars</option>
 											<option value=\"1\">1</option>
 											<option value=\"2\">2</option>
@@ -131,10 +147,10 @@
 											<option value=\"5\">5</option>
 										</select>
 										<img src=\"images/star_full.jpg\" style=\"width: 30px;\" />
-										<input type=\"submit\" name=\"review\" value=\"Submit\" />
+										<input class=\"btn btn-sm btn-outline-secondary float-right\" type=\"submit\" name=\"review\" value=\"Submit\" />
 									</div>
 									<h6>Write your review here (maximum 400 characters):</h6>
-									<textarea name=\"review_text\" rows=\"8\" style=\"width: 100%;\"></textarea>
+									<textarea class=\"form-control\" name=\"review_text\" rows=\"8\" style=\"width: 100%;\"></textarea>
 								</form>								
 							</div>
 							";
