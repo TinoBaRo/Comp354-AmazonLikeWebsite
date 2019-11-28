@@ -65,13 +65,13 @@
 	<!--Action Links -->
 	<div>
 		<!--<button><a href="#">Purchase History</a></button> </br></br>-->
-		<button><a href="userCurrentItems.php">Current Listed Items</a> 
-        </button>
+		<a href="userCurrentItems.php"> <button class="btn btn-primary btn-lg">Current Listed Items </button> </a> 
+        
 
     	</br></br>
 		
-		<button> <a href="postItemPage.php">Post New Item for Sale</a>
-		</button>
+		<a href="postItemPage.php"> <button class="btn btn-primary btn-lg">Post New Item for Sale </button> </a>
+		
 	</div>
 
 
