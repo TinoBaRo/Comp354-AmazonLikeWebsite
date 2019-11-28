@@ -1,9 +1,0 @@
-1:tino:$2y$07$HmE65Vgjr25bgdh4JHelAekNS7sZDBmUETYVircF.hjC8Dxtpad6C:Celestino:Ballesteros:43 Laurier:tino_teros@hotmail.com
-
-2:admin2:$2y$07$HmE65Vgjr25bgdh4JHelAekNS7sZDBmUETYVircF.hjC8Dxtpad6C:Joshua:J:123 fake street:jacobsjjo@hotmail.com
-
-3:admin50:$2y$07$HmE65Vgjr25bgdh4JHelAekNS7sZDBmUETYVircF.hjC8Dxtpad6C:Al:Pacino:123 fake street:someemail@hotmail.com
-4:saab:$2y$07$HmE65Vgjr25bgdh4JHelAetqZ.jcrb9jaP7W41JYJ8IjSNWsz8PG6:Charlie:Chaplin:123 fake street:anotheremail@hotmail.com
-5:stopwatch:$2y$07$HmE65Vgjr25bgdh4JHelAe03VTSJpmAZjIwm92ghvOXZRtj6.NbPm:Ask:Jeeves:456 street does not exist:anotheremail2@hotmail.com
-6:decoy_user:$2y$07$HmE65Vgjr25bgdh4JHelAeWglz69uq6vemKW4l2zYHQpw9GAg94ie:Ikea:Johnson:456 street does not exist:someemail3@hotmail.com
-7:club:$2y$07$HmE65Vgjr25bgdh4JHelAecWngv9XZ5IiM/wHm91wfjVxp/glGK3u:Ivan:Kompada:456 street does not exist:someemail4@hotmail.com

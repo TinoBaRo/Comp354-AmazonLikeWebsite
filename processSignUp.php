@@ -33,9 +33,9 @@
 	// check if the user has already signed up before
 	$loggedBefore = false;
 
-	$myfile = fopen("database/users.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+	$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
 
-	$lineContents = file("database/users.txt");
+	$lineContents = file("loginData.txt");
 
 	$length = count($lineContents);
 
@@ -128,7 +128,7 @@
 			//print ("encrypted pass: ".$userPass."<br />");
 			
 			// write it to: myFile = database/users.txt
-			$myfile = fopen("database/users.txt", "a"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+			$myfile = fopen("loginData.txt", "a"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
 			$text = ($lastId+1) . ":" . $userName . ":" . $userPass . ":" . $firstName . ":" . $lastName . ":" . $address . ":" . $email . PHP_EOL;
 			fwrite($myfile, $text);
 			fclose($myfile);			

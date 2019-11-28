@@ -1,2 +1,2 @@
-1:tino:a1234567:Celestino:Ballesteros:43 Laurier:tino_teros@hotmail.com
-2:tino2:abcd1234:Tino:T:123 fake street:someaddress@hotmail.com
+1:tino:$2y$07$HmE65Vgjr25bgdh4JHelAeEdIURO8uAPx.5pQw9kiCfJgpeOGM0q6:Celestino:Ballesteros:43 Berlioz:tinosauruss@hotmail.com
+2:alex:$2y$07$HmE65Vgjr25bgdh4JHelAeEdIURO8uAPx.5pQw9kiCfJgpeOGM0q6:Alex:Greenman:3424 Colen:Alex@hotmail.com

@@ -44,9 +44,9 @@
 	// if the user enters a non existing user, tell him to sign-up or enter the correct user name (NEED TO DO THIS)
 	$loggedBefore = false;
 
-	$myfile = fopen("database/users.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+	$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
 
-	$lineContents = file("database/users.txt");
+	$lineContents = file("loginData.txt");
 
 	$length = count($lineContents);
 
