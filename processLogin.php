@@ -95,6 +95,10 @@
 		
 		//echo $userPass . " didn't match " . $linePass;
 
+		// FIX error
+		unset($_SESSION);
+		session_destroy();
+
 		require("loginPage.php");
 	}
 
