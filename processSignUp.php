@@ -69,21 +69,27 @@
 		$pass_has_letter = false;
 		$pass_has_digit  = false;
 		
-		if (strlen($userPass) >= $min_pass_length) {
+		if (strlen($userPass) >= $min_pass_length) 
+		{
 			$pass_long_enough = true;
 		}
 		
 		//make sure pass has >= 1 letter and >= 1 digit
-		for ($i = 0; $i < strlen($userPass); $i++) {
-			if ($pass_has_letter === false && ctype_alpha($userPass[$i])) {
+		for ($i = 0; $i < strlen($userPass); $i++) 
+		{
+			if ($pass_has_letter === false && ctype_alpha($userPass[$i])) 
+			{
 				$pass_has_letter = true;
 			}
-			if ($pass_has_digit === false && ctype_digit($userPass[$i])) {
+			if ($pass_has_digit === false && ctype_digit($userPass[$i])) 
+			{
 				$pass_has_digit = true;
 			}
 		}
 		
-		if ($pass_long_enough === false || $pass_has_letter === false || $pass_has_digit === false) {
+
+		if ($pass_long_enough === false || $pass_has_letter === false || $pass_has_digit === false) 
+		{
 			//prompt new user password doesn't meet requirements
 			if ($pass_long_enough === false) {
 				$_SESSION['signUpErrorMsg'] .= "Password must contain at least ".$min_pass_length." characters.<br />";
@@ -114,7 +120,8 @@
 			
 			require("signUpPage.php");
 		}
-		else {			
+		else 
+		{			
 			//write to the file, welcome message, and Search
 			echo "<div align=\"right\">";
 			echo "<h4> Welcome " . $userName . "</h4>";
@@ -134,6 +141,7 @@
 			fclose($myfile);			
 		}
 	}
+
 
 	// if the user is found in the database (loggedBefore is true): the user name already exists
 	if($loggedBefore == true)
