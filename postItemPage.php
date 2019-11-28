@@ -34,7 +34,6 @@ div#pad_left
     <h2>Post New Item</h2>
     <h4>Enter the following information</h4>
     <br>
-    <br>
 </div>
 
 
@@ -101,7 +100,8 @@ div#pad_left
 
 	
     //when user is logged in:
-	if(isset($_SESSION['username']) && !empty($_SESSION['password'])) {
+	if(isset($_SESSION['username']) && !empty($_SESSION['password'])) 
+	{
 		$token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
 
   		if($isLoggedIn) 
@@ -112,11 +112,10 @@ div#pad_left
 
 ?>
 
-</div>
-
-</head>
 
 
+<br>
+<br>
 <div class="card">
 	    <div class="card-block">
 	        <div class="mx-auto" style="width: 600px;">

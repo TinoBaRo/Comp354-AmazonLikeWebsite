@@ -66,7 +66,9 @@
 	<div>
 		<!--<button><a href="#">Purchase History</a></button> </br></br>-->
 		<button><a href="userCurrentItems.php">Current Listed Items</a> 
-                </button></br></br>
+        </button>
+
+    	</br></br>
 		
 		<button> <a href="postItemPage.php">Post New Item for Sale</a>
 		</button>

@@ -41,7 +41,7 @@
    	echo "
    	<div>
         <br>
-        <button class=\"btn btn-primary btn-lg \"> <a href=\"userprofilepage.php\"> </a> Back to user profile  </button>
+         <a href=\"userProfilePage.php\"> <button class=\"btn btn-primary btn-lg \"> Back to user profile </button> </a>  
         <br>
         <br>
         <br>
