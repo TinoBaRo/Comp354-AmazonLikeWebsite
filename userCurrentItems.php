@@ -8,11 +8,17 @@
 ?>
 
 
+<div class="py-5 text-center">
+	<img src="logo354TheStars.png" height="200" width="300">
+    <h2>Listed Items</h2>
+
+</div>
+
+
 <?php 
 	// read from database: userName:description:category:price:quantity:imageNameAndPath
 	$myfile = fopen("database/items.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
     
-	echo "<h4>These are your Listed Items: </h4> </br>";
 
 	echo "
 	<div class=\"card\">
@@ -35,7 +41,7 @@
    	echo "
    	<div>
         <br>
-        <button><a href=\"userprofilepage.php\">Back to user profile</a></button>
+        <button class=\"btn btn-primary btn-lg \"> <a href=\"userprofilepage.php\"> </a> Back to user profile  </button>
         <br>
         <br>
         <br>
