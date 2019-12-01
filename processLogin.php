@@ -13,6 +13,8 @@
 	session_start();
 	$_SESSION['username'] = $_POST['userName']; 
 	$_SESSION['password'] = $_POST['password'];
+	$_SESSION['cart'] = array(); //initialize cart as an empty array
+
 
 
 	// holder variables we will use for the processing

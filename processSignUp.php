@@ -22,6 +22,8 @@
 	$_SESSION['address'] = $_POST['address'];
 	$_SESSION['email'] = $_POST['email'];
 
+	$_SESSION['cart'] = array(); //initialize cart as an empty array
+
 	// holder variables we will use through the processing
 	$userName = $_POST['userName'];
 	$userPass = $_POST['password'];
