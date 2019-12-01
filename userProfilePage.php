@@ -29,8 +29,8 @@
 			$email;
 
 			// read and store
-			$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
-			$lineContents = file("loginData.txt"); // Each array element contains a line from the file
+			$myfile = fopen("database/loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+			$lineContents = file("database/loginData.txt"); // Each array element contains a line from the file
 			$length = count($lineContents);
 			fclose($myfile);
 
