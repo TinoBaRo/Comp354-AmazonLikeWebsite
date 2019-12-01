@@ -75,6 +75,8 @@
 					else { //if value 0 or NaN -> not yet initialized
 						print ('<p class="card-body" style="font-size: 20px;">Not yet rated <img src="images/star_full.jpg" style="width: 32px;"/></p>');
 					}
+
+					;
 				?>
 
 				</div>
@@ -88,7 +90,6 @@
 						<small><?php print ($category); ?></small>
 					</div>	
 					<br/>
-
 					<div class="row">
 						<p><?php print ($description_short); ?></p>
 					</div>
@@ -111,7 +112,13 @@
 							</div>
 							<div class="col-md-6 text-right pr-4">
 								<h4> Stock: </h4>
-								<label><?php print ($stock); ?></label>
+								<label><?php 
+											if ($stock > 0)
+												print ($stock);
+											else
+												echo "<b>Out of Stock</b>";
+										 ?>
+								</label>
 							</div>
 						</div>
 						<div class="row">
@@ -128,12 +135,18 @@
 						if( isset($_SESSION['username']))
 						{
 							echo "
-							<div class=\"m-2 h-30\">
-								<form method=\"POST\" action=\"checkout.php\">
+							<div class=\"m-2 h-30\"> ";
+
+							if ($stock > 0) {
+								echo "
+								<form method=\"POST\" action=\"addToShoppingCart.php\">
 									<div class=\"btn-group\">									
-										<input type=\"submit\" name=\"purchase\" class=\"btn btn-sm btn-outline-secondary\" value=\"Purchase Item\">
+										<input type=\"submit\" name=\"purchase\" class=\"btn btn-sm btn-outline-secondary\" value=\"Add to Shopping Cart\">
 									</div>
-								</form>
+								</form>";
+							}
+
+							echo "
 								<br />
 								<h6>Leave a review!</h6>
 								<form method=\"POST\" action=\"itemPage.php\">

@@ -83,6 +83,11 @@
 	  				echo "<form class=\"form-inline my-2 my-lg-0\">
 							<a class=\"nav-link float-right\" href=\"userProfilePage.php\">" . $_SESSION['username'] . "'s Profile</a>
 	  						</form> ";
+
+	  				// if logged in, user will see the state of his shopping cart
+	  				echo "<form class=\"form-inline my-2 my-lg-0\">
+							<a class=\"nav-link float-right\" href=\"shoppingCartPage.php\"> My Cart (" . count($_SESSION['cart']) . ")</a>
+	  						</form> ";		
     			}
     			else
     			{
