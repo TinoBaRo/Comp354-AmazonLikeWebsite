@@ -13,7 +13,7 @@
 	
 	<div id="pad_left">
 	<p>
-		<h3>Home Page</h3>
+		<h3>Search Results</h3>
 	</p>		
 	<!-- sort -->
 	<form method="GET" class="form-inline" action="<?=$_SERVER['PHP_SELF'];?>">
@@ -251,7 +251,9 @@
 	<!-- Pagination --> 
 	<ul class="pagination fixed-bottom justify-content-center">
 		<?php 
-		if($current_page > 1) { echo "<li class=\"page-item\"> <a class='page-link' href=\"?current_page=$previous_page\"> Previous </a> </li>"; } 
+		if($current_page > 1) { 
+		echo "<li class=\"page-item\"> <a class='page-link' href=\"?current_page=1\"> &lsaquo;&lsaquo; First </a> </li>";
+		echo "<li class=\"page-item\"> <a class='page-link' href=\"?current_page=$previous_page\"> Previous </a> </li>"; } 
 		?>
 
 		<?php    

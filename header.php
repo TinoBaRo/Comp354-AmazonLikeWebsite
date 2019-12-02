@@ -27,7 +27,7 @@
 		  		<img src="images/logo354TheStars.png" height="50" width="110"> <!-- Logo Picture -->
 		  	</a>
 			
-		<form method="GET" action="<?=$_SERVER['PHP_SELF'];?>">
+		<form method="GET" action="homePage.php">
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
 			    <li class="nav-item dropdown">			    	
@@ -57,8 +57,8 @@
 			<input class="form-control" style="width: auto" name="itemname" type="text" />
 			&nbsp;&nbsp;&nbsp;
 			Price Range:&nbsp;
-			<input type="number" class="form-control" style="max-width: 100px" name="price_min" step="0.01" placeholder="Min"></input> &nbsp;-&nbsp;
-			<input type="number" class="form-control" style="max-width: 100px" name="price_max" step="0.01" placeholder="Max"></input>
+			<input type="number" class="form-control" style="max-width: 100px" name="price_min" step="0.01" min="0.00" placeholder="Min"></input> &nbsp;-&nbsp;
+			<input type="number" class="form-control" style="max-width: 100px" name="price_max" step="0.01" min="0.00" placeholder="Max"></input>
 			&nbsp;&nbsp;&nbsp;
 			<input type="submit" class="btn btn-sm btn-outline-secondary" value="Search" />
 			
@@ -83,11 +83,6 @@
 	  				echo "<form class=\"form-inline my-2 my-lg-0\">
 							<a class=\"nav-link float-right\" href=\"userProfilePage.php\">" . $_SESSION['username'] . "'s Profile</a>
 	  						</form> ";
-
-	  				// if logged in, user will see the state of his shopping cart
-	  				echo "<form class=\"form-inline my-2 my-lg-0\">
-							<a class=\"nav-link float-right\" href=\"shoppingCartPage.php\"> My Cart (" . count($_SESSION['cart']) . ")</a>
-	  						</form> ";		
     			}
     			else
     			{
