@@ -7,13 +7,11 @@
 ?>
 	<style>
 		#pad_left {
-			padding-left: 20px;
-			padding-right: 20px;
+			padding-left: 15px;
+			padding-right: 15px;
 		}
 
-		#pad_right {
-			padding-right: 20px;
-		}
+		
 	</style>
 	
 
@@ -22,37 +20,35 @@
 			<h3>Home Page</h3>
 		</p>		
 
+		<!-- Sort buttons -->
+		<p>
+			<form method="GET" class="form-inline" action="<?=$_SERVER['PHP_SELF'];?>">
+				<label class="lab">Sort by:&nbsp;</label>
+				<select class="form-control" style="max-width: 150px" name="sort_by">
+					<option value="Item Name">Item Name</option>
+					<option value="Description">Description</option>
+					<option value="Stock">Stock</option>
+					<option value="Category">Category</option>
+					<option value="Price">Price</option>
+					<option value="Rating">Rating</option>
+				</select>&nbsp;
+				<select class="form-control" style="max-width: 150px" name="order">
+					<option value="Ascending">Ascending</option>
+					<option value="Descending">Descending</option>
+				</select>
+				&nbsp;&nbsp;
+				<input type="submit" class="btn btn-sm btn-outline-secondary" name="sort" value="Sort" />
+			</form>
+		</p>
+		
+
 		<!-- TABLE below header -->
 		<table>
-		<tr>
-			<th>
-			<p>
-				<form method="GET" class="form-inline" action="<?=$_SERVER['PHP_SELF'];?>">
-					<label class="lab">Sort by:&nbsp;</label>
-					<select class="form-control" style="max-width: 150px" name="sort_by">
-						<option value="Item Name">Item Name</option>
-						<option value="Description">Description</option>
-						<option value="Stock">Stock</option>
-						<option value="Category">Category</option>
-						<option value="Price">Price</option>
-						<option value="Rating">Rating</option>
-					</select>&nbsp;
-					<select class="form-control" style="max-width: 150px" name="order">
-						<option value="Ascending">Ascending</option>
-						<option value="Descending">Descending</option>
-					</select>
-					&nbsp;&nbsp;
-					<input type="submit" class="btn btn-sm btn-outline-secondary" name="sort" value="Sort" />
-				</form>
-			</p>
-			</th>
-		</tr>
-
 		<tr>
 			<!-- video advertisements -->
 			<th>
 			<p>
-				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+				<video width = "470" height = "200" autoplay="autoplay" muted ="muted" >
 			      <source src = "ad_TheNorthFace_Jacket.mp4">
 			      <source src = "ad_TheNorthFace_Jacket.ogv"> 
 			      <source src = "ad_TheNorthFace_Jacket.webm"> 
@@ -63,7 +59,7 @@
 
 	    	<th>
 			<p>
-				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+				<video width = "470" height = "200" autoplay="autoplay" muted ="muted" >
 			      <source src = "ad_TheNorthFace_Jacket.mp4">
 			      <source src = "ad_TheNorthFace_Jacket.ogv"> 
 			      <source src = "ad_TheNorthFace_Jacket.webm"> 
@@ -74,7 +70,7 @@
 
 	    	<th>
 			<p>
-				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+				<video width = "470" height = "200" autoplay="autoplay" muted ="muted" >
 			      <source src = "ad_TheNorthFace_Jacket.mp4">
 			      <source src = "ad_TheNorthFace_Jacket.ogv"> 
 			      <source src = "ad_TheNorthFace_Jacket.webm"> 
@@ -314,7 +310,7 @@
 			<!-- video advertisements -->
 			<th>
 			<p>
-				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+				<video width = "470" height = "200" autoplay="autoplay" muted ="muted" >
 			      <source src = "ad_Patagonia_Jacket.mp4">
 			      <source src = "ad_Patagonia_Jacket.ogv"> 
 			      <source src = "ad_Patagonia_Jacket.webm"> 
@@ -325,7 +321,7 @@
 
 	    	<th>
 			<p>
-				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+				<video width = "470" height = "200" autoplay="autoplay" muted ="muted" >
 			      <source src = "ad_Patagonia_Jacket.mp4">
 			      <source src = "ad_Patagonia_Jacket.ogv"> 
 			      <source src = "ad_Patagonia_Jacket.webm"> 
@@ -336,7 +332,7 @@
 
 	    	<th>
 			<p>
-				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+				<video width = "470" height = "200" autoplay="autoplay" muted ="muted" >
 			      <source src = "ad_Patagonia_Jacket.mp4">
 			      <source src = "ad_Patagonia_Jacket.ogv"> 
 			      <source src = "ad_Patagonia_Jacket.webm"> 
