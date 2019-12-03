@@ -6,34 +6,90 @@
 	include("computeRating.php");
 ?>
 	<style>
-	div#pad_left {
-		padding-left: 20px;
-	}
+		#pad_left {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		#pad_right {
+			padding-right: 20px;
+		}
 	</style>
 	
+
 	<div id="pad_left">
-	<p>
-		<h3>Home Page</h3>
-	</p>		
-	<!-- sort -->
-	<form method="GET" class="form-inline" action="<?=$_SERVER['PHP_SELF'];?>">
-		<label class="lab">Sort by:&nbsp;</label>
-		<select class="form-control" style="max-width: 150px" name="sort_by">
-			<option value="Item Name">Item Name</option>
-			<option value="Description">Description</option>
-			<option value="Stock">Stock</option>
-			<option value="Category">Category</option>
-			<option value="Price">Price</option>
-			<option value="Rating">Rating</option>
-		</select>&nbsp;
-		<select class="form-control" style="max-width: 150px" name="order">
-			<option value="Ascending">Ascending</option>
-			<option value="Descending">Descending</option>
-		</select>
-		&nbsp;&nbsp;
-		<input type="submit" class="btn btn-sm btn-outline-secondary" name="sort" value="Sort" />
-	</form>
-	</div>
+		<p>
+			<h3>Home Page</h3>
+		</p>		
+
+		<!-- TABLE below header -->
+		<table>
+		<tr>
+			<th>
+			<p>
+				<form method="GET" class="form-inline" action="<?=$_SERVER['PHP_SELF'];?>">
+					<label class="lab">Sort by:&nbsp;</label>
+					<select class="form-control" style="max-width: 150px" name="sort_by">
+						<option value="Item Name">Item Name</option>
+						<option value="Description">Description</option>
+						<option value="Stock">Stock</option>
+						<option value="Category">Category</option>
+						<option value="Price">Price</option>
+						<option value="Rating">Rating</option>
+					</select>&nbsp;
+					<select class="form-control" style="max-width: 150px" name="order">
+						<option value="Ascending">Ascending</option>
+						<option value="Descending">Descending</option>
+					</select>
+					&nbsp;&nbsp;
+					<input type="submit" class="btn btn-sm btn-outline-secondary" name="sort" value="Sort" />
+				</form>
+			</p>
+			</th>
+		</tr>
+
+		<tr>
+			<!-- video advertisements -->
+			<th>
+			<p>
+				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+			      <source src = "ad_TheNorthFace_Jacket.mp4">
+			      <source src = "ad_TheNorthFace_Jacket.ogv"> 
+			      <source src = "ad_TheNorthFace_Jacket.webm"> 
+			      Your browser does not support the video element
+		    	</video>
+	    	</p>
+	    	</th>
+
+	    	<th>
+			<p>
+				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+			      <source src = "ad_TheNorthFace_Jacket.mp4">
+			      <source src = "ad_TheNorthFace_Jacket.ogv"> 
+			      <source src = "ad_TheNorthFace_Jacket.webm"> 
+			      Your browser does not support the video element
+		    	</video>
+	    	</p>
+	    	</th>
+
+	    	<th>
+			<p>
+				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+			      <source src = "ad_TheNorthFace_Jacket.mp4">
+			      <source src = "ad_TheNorthFace_Jacket.ogv"> 
+			      <source src = "ad_TheNorthFace_Jacket.webm"> 
+			      Your browser does not support the video element
+		    	</video>
+	    	</p>
+	    	</th>
+
+	    </tr>
+		</table>
+
+	</div> <!-- Section including 'Home Page' -->
+	
+
+	<!-- new line -->
 	<br/>
 
 	<main role="main">
@@ -247,6 +303,59 @@
 	</div>
 
 	</main>
+
+	<!-- new line -->
+	<br/>
+
+	<!-- More Advertisement Space -->
+	<div id="pad_left">
+		<table>
+		<tr>
+			<!-- video advertisements -->
+			<th>
+			<p>
+				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+			      <source src = "ad_Patagonia_Jacket.mp4">
+			      <source src = "ad_Patagonia_Jacket.ogv"> 
+			      <source src = "ad_Patagonia_Jacket.webm"> 
+			      Your browser does not support the video element
+		    	</video>
+	    	</p>
+	    	</th>
+
+	    	<th>
+			<p>
+				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+			      <source src = "ad_Patagonia_Jacket.mp4">
+			      <source src = "ad_Patagonia_Jacket.ogv"> 
+			      <source src = "ad_Patagonia_Jacket.webm"> 
+			      Your browser does not support the video element
+		    	</video>
+	    	</p>
+	    	</th>
+
+	    	<th>
+			<p>
+				<video width = "500" height = "200" autoplay="autoplay" muted ="muted" >
+			      <source src = "ad_Patagonia_Jacket.mp4">
+			      <source src = "ad_Patagonia_Jacket.ogv"> 
+			      <source src = "ad_Patagonia_Jacket.webm"> 
+			      Your browser does not support the video element
+		    	</video>
+	    	</p>
+	    	</th>
+	    
+	    </tr>
+		</table>
+
+	</div>
+
+
+	<!-- new lines -->
+	<br/><br/>
+	<br/><br/>
+
+
 
 	<!-- Pagination --> 
 	<ul class="pagination fixed-bottom justify-content-center">
