@@ -135,6 +135,9 @@
 			//print ("salt: ".$salt."<br />");
 			$userPass = crypt($userPass, '$2y$07$'.$salt.'$');
 			//print ("encrypted pass: ".$userPass."<br />");
+
+			// ERROR FIXED?
+			$_SESSION['userid'] = $lastId + 1; // <- user's new id (number of existing users + 1) 
 			
 			// write it to: myFile = database/loginData.txt
 			$myfile = fopen("database/loginData.txt", "a"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
