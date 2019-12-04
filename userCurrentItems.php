@@ -9,10 +9,11 @@
 
 
 <div class="py-5 text-center">
-	<img src="images\logo.png" height="300" width="400">
+	<img src="images\logo.png" height="200" width="230">
     <br>
     <br>
-    <h2>Listed Items</h2>
+	<?php if(isset($_SESSION['username'])){ echo "<h2>" . $_SESSION['username'] . "'s Listings</h2>";}
+	?>
 
 </div>
 
@@ -26,6 +27,7 @@
 	<div class=\"card\">
 	    <div class=\"card-block\">
 	        <div class=\"mx-auto\" style=\"width: 600px;\">
+			
     ";
     $gotAnItem = false;
     while(!feof($myfile)) 
@@ -37,7 +39,7 @@
                         break;}
                         $gotAnItem = true;
 			$srcc = "images/$items[2]";
-			echo "<br> <img src=$srcc height=300 width=300/><br>$items[1]<br> $items[5]<br>$items[3] CAD<br>$items[8] left. </br>";
+			echo "<br><img src=$srcc height=300 width=300/><br>$items[1]<br> $items[5]<br>$items[3] CAD<br>$items[8] left.</br>";
 
 			echo "<hr>";
 		}        
@@ -47,7 +49,7 @@
     }
 
    	echo "
-   	<div>
+	<div>
         <br>
          <a href=\"userProfilePage.php\"> <button class=\"btn btn-primary btn-lg \"> Back to user profile </button> </a>  
          <a href=\"postItemPage.php\"> <button class=\"btn btn-primary btn-lg \"> Post New Item for Sale </button> </a>

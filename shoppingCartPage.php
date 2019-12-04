@@ -7,7 +7,7 @@
 
 <?php 
 	if (count($_SESSION['cart']) == 0) {
-		echo "<h4>Your cart is empty</h4>";
+		echo "<h4 style=\"padding-left:12px;\">Your cart is empty</h4>";
 	}
 
 	else {

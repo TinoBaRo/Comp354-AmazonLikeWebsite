@@ -12,6 +12,7 @@
 <div class="py-3 text-center">
 	<!-- user information and picture -->
 	<div>
+	
 		<?php  
 			// Show user name profile
 			echo "<h2> Your Profile " . "\"" . $_SESSION['username'] . "\"" . "</h2>";
