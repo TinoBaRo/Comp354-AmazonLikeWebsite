@@ -8,6 +8,14 @@
 		text-decoration: underline;
 		background-color: rgba(0,0,0,0);
 	}
+	
+	input#banner_link_bold {
+		border: none;
+		color: #007bff;
+		text-decoration: underline;
+		font-weight: bold;
+		background-color: rgba(0,0,0,0);
+	}
 	</style>
 
 <?php 
@@ -26,13 +34,7 @@
 			<input type="submit" id="banner_link" name="new_items" value="'.$banner_strings[1].'" />
 		</form>',
 		'<form method="GET" action="homePage.php">
-			<input type="submit" id="banner_link" name="sponsored_items" value="'.$banner_strings[2].'" />
-		</form>',
-		'<form method="GET" action="homePage.php">
-			<input type="submit" id="banner_link" name="best_categories" value="'.$banner_strings[3].'" />
-		</form>',
-		'<form method="GET" action="giftCards.php">
-			<input type="submit" id="banner_link" name="gift_cards" value="'.$banner_strings[4].'" />
+			<input type="submit" id="banner_link" name="best_categories" value="'.$banner_strings[2].'" />
 		</form>');
 		
 	$num_banner_items = count($banner_items);
@@ -65,7 +67,7 @@
 	}
 ?>
 	<style>
-	div#pad_left {
+	#pad_left {
 		padding-left: 20px;
 	}
 	
@@ -156,21 +158,25 @@
 	}
 	
 	function display_items_index($items_ids, $item_lines, $num_items) {
-		print ('<table><tr>');
+		print ('<table id="pad_left"><tr id="pad_left">');
 		for ($i = 0; $i < count($items_ids); $i++) {
 			$curr_id = $items_ids[$i];
 			$item_datas = explode(":", $item_lines[$curr_id - 1]); //split the line by colon
 
-			list($_, $itemname, $_, 
+			list($itemid, $itemname, $_, 
 				$price, $userid_fk, $_, $_, 
 				$_, $_, $_) = $item_datas;
 			
 			print 
-				('<td>
+				('<td id="pad_left" style="width: 250px";>
 					<div class="card-body">
-						<b class="card-text">'.$itemname.'</b>
+						<form method="POST" action="index.php">
+							<input type="submit" id="banner_link_bold" name="viewItem" value="'.$itemname.'" />
+							<input type="hidden" name="id" value="'.$itemid.'" />
+						</form>
 					</div>
-					<img src="images/'.$curr_id.'.jpg" width="100" height="100">
+						<img src="images/'.$curr_id.'.jpg" width="100" height="100">
+					</form>
 					<div class="card-body">
 						<div class="d-flex justify-content-between align-items-center">
 						<p class="card-text" style="text-align: right;">$'.$price.'</p>
@@ -180,18 +186,27 @@
 		}
 		print ('</tr></table>');
 	}
+	
+	function display_category($cat_name, $order_lines, $num_orders, $item_lines, $num_items) {
+		$cat_data = popular_items_for_category($cat_name, $order_lines, $num_orders);
+		
+		if (count($cat_data) > 0) {
+			echo "<h4>Most Popular Items in $cat_name</h4>";
+			display_items_index($cat_data, $item_lines, $num_items);
+			echo "<hr />";
+		}		
+	}
 ?>
 	<div id="pad_left">
 	<br />
 	<hr />
 	<p>
-		<?php		
-		$category_books = "Books";
-		$books_data = popular_items_for_category($category_books, $order_lines, $num_orders);
-		echo "<h4>Most Popular Items in $category_books</h4>";
-		display_items_index($books_data, $item_lines, $num_items);
-		
-
+		<?php	
+		display_category("Books", $order_lines, $num_orders, $item_lines, $num_items);
+		display_category("Electronics", $order_lines, $num_orders, $item_lines, $num_items);
+		display_category("Clothing", $order_lines, $num_orders, $item_lines, $num_items);
+		display_category("Video Games", $order_lines, $num_orders, $item_lines, $num_items);
+		display_category("Toys", $order_lines, $num_orders, $item_lines, $num_items);
 		?>
 		
 	</p>
@@ -200,5 +215,10 @@
 	</main>
 
 <?php
+	if (isset($_POST['id'])) {
+		$_SESSION["itemPage_id"] = $_POST['id'];
+		print ("<script>location.href='itemPage.php';</script>"); //redirect to itemPage.php
+	}
+
     require("footer.php");
 ?>
