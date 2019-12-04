@@ -24,7 +24,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  	
 		  	<a class="navbar-brand" href="homePage.php">
-		  		<img src="images/logo354TheStars.png" height="50" width="110"> <!-- Logo Picture -->
+		  		<img src="images/logo.png" height="75" width="95"> <!-- Logo Picture -->
 		  	</a>
 			
 		<form method="GET" action="<?=$_SERVER['PHP_SELF'];?>">
