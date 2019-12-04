@@ -9,7 +9,9 @@
 
 
 <div class="py-5 text-center">
-	<img src="logo354TheStars.png" height="200" width="300">
+	<img src="images\logo.png" height="300" width="400">
+    <br>
+    <br>
     <h2>Listed Items</h2>
 
 </div>

@@ -64,6 +64,8 @@
         <div class="mx-auto" style="width: 400px;">
               
                 <img class="card-img-top" src="images\logo.png" alt="Card image cap">
+                <br>
+    			<br>
 
                 <?php  
 					if(isset($_SESSION['username']))

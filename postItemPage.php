@@ -30,10 +30,13 @@ div#pad_left
 
 
 <div class="py-5 text-center">
-	<img src="images\logo.png" height="200">
+	<img src="images\logo.png" height="300" width="400">
+	<br>
+    <br>
+
     <h2>Post New Item</h2>
     <h4>Enter the following information</h4>
-    <br>
+    
 </div>
 
 
@@ -120,7 +123,11 @@ div#pad_left
 	    <div class="card-block">
 	        <div class="mx-auto" style="width: 600px;">
 
+	        
 			<form method='POST' enctype="multipart/form-data">
+				<br>
+    			<br>
+
 				Item Name<br />
 				<input class="form-control" type="text" name="itemname" required></input><br />
 				Price ($)<br />

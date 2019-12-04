@@ -84,8 +84,10 @@
 
 <div class="card">
     <div class="card-block">
-    	<div class="mx-auto" style="width: 600px;">
+    	<div class="mx-auto" style="width: 400px;">
         <img class="card-img-top" src="images\logo.png" alt="Card image cap">
+        <br>
+        <br>
 
 <?php  
 
