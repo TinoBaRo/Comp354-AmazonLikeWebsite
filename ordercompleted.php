@@ -68,21 +68,43 @@
     			<br>
 
                 <?php  
-					if(isset($_SESSION['username']))
+					if(isset($_SESSION['username']) and isset($_SESSION['checkoutItem']))
 					{
+						//order file is as follows--
+						//OrderID(PK):UserID(Seller,FK):ItemID(FK):ItemName:ItemCategory:OrderDate
+						$order_file = file("database/orders.txt", FILE_IGNORE_NEW_LINES);
+						//total number of orders in system thus far
+						$num_orders = count($order_file);
+						$next_id = 1;
+						if ($num_orders > 0) {
+							$next_id = explode(":", $order_file[count($order_file) - 1])[0] + 1;
+						}
+						
+						$delimiter = ':';
+				
+						$new_order_line = 
+						$next_id . $delimiter .
+							$_SESSION['checkoutItem']['userId'] . $delimiter .
+							$_SESSION['checkoutItem']['itemId'] . $delimiter .
+							$_SESSION['checkoutItem']['itemName'] . $delimiter .
+							$_SESSION['checkoutItem']['category'] . $delimiter .
+						date("Y-m-d") . $review_text.PHP_EOL;
+
+						//write this line to orders file
+						$orders_table = fopen("database/orders.txt", "a+");
+						fwrite($orders_table, $new_order_line);
+						fclose($orders_table);
+						
 						echo "<h4> Your order has been completed \"" . $_SESSION['username'] . "\". </h4>";
 						echo "<br/>";
 						echo "<h4> Thanks for shopping at 354TheStars.com! </h4>";
 						echo "<br/>";
-						echo "<h4> Come back soon </h4>";
+						echo "<h4> Come back soon.</h4>";
 					}
 					else
 					{
-						echo "<h4> Your order has been completed. Thanks for shopping at 354TheStars.com! </h4>";
-						echo "<br/>";
-						echo "<h4> Thanks for shopping at 354TheStars.com! </h4>";
-						echo "<br/>";
-						echo "<h4> Come back soon </h4>";
+						echo "<h4> Whoops! Something went wrong. </h4>";
+						echo "<a href='homePage.php'> Back to home page </h4>";
 					}
 				?>
         </div>

@@ -41,7 +41,7 @@
 						$category, $stock, $return_policy) = explode(":", $match);
 						
 					//look through users file for name of user who sold item
-					$users = file("database/users.txt", FILE_IGNORE_NEW_LINES);
+					$users = file("database/loginData.txt", FILE_IGNORE_NEW_LINES);
 					$num_users = count($users);
 
 					for ($i=0; $i < $num_users; $i++) { 
@@ -143,10 +143,7 @@
 									<div class=\"btn-group\">									
 										<input type=\"submit\" name=\"purchase\" class=\"btn btn-sm btn-outline-secondary\" value=\"Add to Shopping Cart\">
 									</div>
-								</form>";
-							}
-
-							echo "
+								</form>
 								<br />
 								<h6>Leave a review!</h6>
 								<form method=\"POST\" action=\"itemPage.php\">
@@ -168,6 +165,15 @@
 							</div>
 							";
 							//also grant ability to write reviews if logged in
+						}
+						else
+							echo "
+							<div class=\"m-2 h-50\">
+								<h5>
+								To purchase or review this item, you must be logged in.
+								</h5>
+							</div>
+						";
 						}
 						else
 							echo "
