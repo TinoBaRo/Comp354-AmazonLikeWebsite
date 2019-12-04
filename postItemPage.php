@@ -30,7 +30,7 @@ div#pad_left
 
 
 <div class="py-5 text-center">
-	<img src="logo354TheStars.png" height="200" width="300">
+	<img src="images\logo.png" height="200">
     <h2>Post New Item</h2>
     <h4>Enter the following information</h4>
     <br>
