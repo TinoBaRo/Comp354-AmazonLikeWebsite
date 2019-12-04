@@ -41,7 +41,7 @@
 						$category, $stock, $return_policy) = explode(":", $match);
 						
 					//look through users file for name of user who sold item
-					$users = file("database/users.txt", FILE_IGNORE_NEW_LINES);
+					$users = file("loginData.txt", FILE_IGNORE_NEW_LINES);
 					$num_users = count($users);
 
 					for ($i=0; $i < $num_users; $i++) { 

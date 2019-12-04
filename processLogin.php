@@ -13,8 +13,6 @@
 	session_start();
 	$_SESSION['username'] = $_POST['userName']; 
 	$_SESSION['password'] = $_POST['password'];
-	$_SESSION['cart'] = array(); //initialize cart as an empty array
-
 
 
 	// holder variables we will use for the processing
@@ -29,9 +27,9 @@
 	// if the user enters a non existing user, tell him to sign-up or enter the correct user name (NEED TO DO THIS)
 	$loggedBefore = false;
 
-	$myfile = fopen("database/loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+	$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
 
-	$lineContents = file("database/loginData.txt");
+	$lineContents = file("loginData.txt");
 
 	$length = count($lineContents);
 

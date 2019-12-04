@@ -1,4 +1,5 @@
 
+
 <!-- This file processes the Sign Up Form (from signUpPage.php), and then does an action --> 
 
 <?php
@@ -22,8 +23,6 @@
 	$_SESSION['address'] = $_POST['address'];
 	$_SESSION['email'] = $_POST['email'];
 
-	$_SESSION['cart'] = array(); //initialize cart as an empty array
-
 	// holder variables we will use through the processing
 	$userName = $_POST['userName'];
 	$userPass = $_POST['password'];
@@ -35,9 +34,9 @@
 	// check if the user has already signed up before
 	$loggedBefore = false;
 
-	$myfile = fopen("database/loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+	$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
 
-	$lineContents = file("database/loginData.txt");
+	$lineContents = file("loginData.txt");
 
 	$length = count($lineContents);
 
@@ -134,10 +133,12 @@
 			// encrypt password, then write it into DB:
 			//print ("salt: ".$salt."<br />");
 			$userPass = crypt($userPass, '$2y$07$'.$salt.'$');
+			$_SESSION['userid'] = $lastId + 1; // <- user's new id (number of existing users + 1) 
+											   //also sent to session var
 			//print ("encrypted pass: ".$userPass."<br />");
 			
-			// write it to: myFile = database/loginData.txt
-			$myfile = fopen("database/loginData.txt", "a"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+			// write it to: myFile = database/users.txt
+			$myfile = fopen("loginData.txt", "a"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
 			$text = ($lastId+1) . ":" . $userName . ":" . $userPass . ":" . $firstName . ":" . $lastName . ":" . $address . ":" . $email . PHP_EOL;
 			fwrite($myfile, $text);
 			fclose($myfile);			

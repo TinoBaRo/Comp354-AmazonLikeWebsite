@@ -32,7 +32,12 @@
 		if ($items[4] == $_SESSION['userid']) 
 		{
 			$srcc = "images/$items[2]";
-			echo "<br> <img src=$srcc height=300 width=300/><br>$items[1]<br> $items[5]<br>$items[3] CAD<br>$items[8] left. </br>";
+			echo "<br> <img src=$srcc height=300 width=300/>
+				<form method='POST' action='userCurrentItems.php'>
+					<input type='submit' name='sponsor' value='Sponsor Item' id='$itemid'>
+					<input type='hidden' name='sponsor' value='$items[0]:$items[1]:$items[3]'/>
+				</form>
+				<br>$items[1]<br> $items[5]<br>$items[3] CAD<br>$items[8] left. </br>";
 
 			echo "<hr>";
 		}        
@@ -55,6 +60,22 @@
     "; 
 
 	fclose($myfile);
+	
+	if (isset($_POST['sponsor'])) {
+		$passed_data = $_POST['sponsor'];
+		
+		$item_attributes = explode(":", $passed_data);
+		
+		$id = $item_attributes[0];
+		$name = $item_attributes[1];
+		$price = $item_attributes[2];
+		
+		$_SESSION['sponsorItem']['itemId'] = $id;
+		$_SESSION['sponsorItem']['itemName'] = $name;
+		$_SESSION['sponsorItem']['itemPrice'] = $price;
+		
+		print ("<script>location.href='sponsorItem.php';</script>"); //redirect to sponsorItem.php
+	}
 ?>
 
 

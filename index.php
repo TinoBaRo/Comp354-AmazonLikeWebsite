@@ -1,45 +1,68 @@
 
 <!-- index, initial landing page -->
 
+	<style>
+	input#banner_link {
+		border: none;
+		color: #007bff;
+		text-decoration: underline;
+		background-color: rgba(0,0,0,0);
+	}
+	</style>
+
 <?php 
 	require("header.php");
 	include("computeRating.php");
-	
-	//unset($_SESSION["banner_index"]);
-	
-	if (!isset($_SESSION["banner_index"])) {
-		$banner_index = 0;
-	}
-	else {
-		$banner_index = $_SESSION["banner_index"];
-	}
-	print ($banner_index."<br />");
+	include("bannerItems.php");
+
+	$index_cookie = file("cookies/index_banner.txt", FILE_IGNORE_NEW_LINES);
+	$banner_index = $index_cookie[0];
 
 	$banner_items = array(
-		"This is Best Sellers", 
-		"This is Newest Items", 
-		"This is Sponsored Items", 
-		"This is Hottest Categories",
-		"This is where you buy/give/redeem gift cards");
+		'<form method="GET" action="homePage.php">
+			<input type="submit" id="banner_link" name="best_sellers" value="'.$banner_strings[0].'" />
+		</form>',
+		'<form method="GET" action="homePage.php">
+			<input type="submit" id="banner_link" name="new_items" value="'.$banner_strings[1].'" />
+		</form>',
+		'<form method="GET" action="homePage.php">
+			<input type="submit" id="banner_link" name="sponsored_items" value="'.$banner_strings[2].'" />
+		</form>',
+		'<form method="GET" action="homePage.php">
+			<input type="submit" id="banner_link" name="best_categories" value="'.$banner_strings[3].'" />
+		</form>',
+		'<form method="GET" action="giftCards.php">
+			<input type="submit" id="banner_link" name="gift_cards" value="'.$banner_strings[4].'" />
+		</form>');
 		
-	$num_banner_items = count($banner_items);	
+	$num_banner_items = count($banner_items);
 
 	if (isset($_POST["submit_prev"])) {		
-		print ("Clicked previous button<br />");
-		if ($banner_index > 0)	
-			$_SESSION["banner_index"] -= 1;
-		else
-			$_SESSION["banner_index"] = $num_banner_items - 1;
+		if ($banner_index > 0) {
+			//$_SESSION["banner_index"] -= 1;
+			$banner_index -= 1;
+		}
+		else {
+			//$_SESSION["banner_index"] = $num_banner_items - 1;
+			$banner_index = $num_banner_items - 1;
+		}
+		$new_index = fopen("cookies/index_banner.txt", "w");
+		fwrite($new_index, $banner_index);
+		fclose($new_index);
 	}
 	if (isset($_POST["submit_next"])) {
-		print ("Clicked next button<br />");
-		if ($banner_index < ($num_banner_items - 1))
+		if ($banner_index < ($num_banner_items - 1)) {
 			$_SESSION["banner_index"] += 1;
-		else	
+			$banner_index += 1;
+		}
+		else {
 			$_SESSION["banner_index"] = 0;
+			$banner_index = 0;
+		}
+		$new_index = fopen("cookies/index_banner.txt", "w");
+		fwrite($new_index, $banner_index);
+		fclose($new_index);
 	}
-	
-	print ($banner_index."<br />");
 ?>
 	<style>
 	div#pad_left {
@@ -101,6 +124,79 @@
 	    </div>
 	</div>
 
+<?php
+	//special means of filtering, activated from index page
+	//view order history by retrieving orders data, orders.txt file
+	$order_lines = file("database/orders.txt", FILE_IGNORE_NEW_LINES);
+	$num_orders = count($order_lines);
+				
+	//items.txt file
+	$item_lines = file("database/items.txt", FILE_IGNORE_NEW_LINES);
+	$num_items = count($lines);
+
+	function popular_items_for_category($input_category, $order_lines, $num_orders) {
+		$item_ids = array();
+		for ($i = 0; $i < $num_orders; $i++) {
+			$order_datas = explode(":", $order_lines[$i]); //split the line by colon		
+			list($_, $_, $id, $_, $category, $_) = $order_datas;
+
+			//item has to be in the requested category...
+			if ($category == $input_category) {
+				array_push($item_ids, $id);
+			}
+		}
+		
+		//get the most commonly occurring category out of this array...
+		$counts = array_count_values($item_ids);
+		arsort($counts);
+		//best sellers: people whose items were bought the most; 2: get top 2 selling items
+		$best_ids = array_slice(array_keys($counts), 0, 2, true);
+		
+		return $best_ids;
+	}
+	
+	function display_items_index($items_ids, $item_lines, $num_items) {
+		print ('<table><tr>');
+		for ($i = 0; $i < count($items_ids); $i++) {
+			$curr_id = $items_ids[$i];
+			$item_datas = explode(":", $item_lines[$curr_id - 1]); //split the line by colon
+
+			list($_, $itemname, $_, 
+				$price, $userid_fk, $_, $_, 
+				$_, $_, $_) = $item_datas;
+			
+			print 
+				('<td>
+					<div class="card-body">
+						<b class="card-text">'.$itemname.'</b>
+					</div>
+					<img src="images/'.$curr_id.'.jpg" width="100" height="100">
+					<div class="card-body">
+						<div class="d-flex justify-content-between align-items-center">
+						<p class="card-text" style="text-align: right;">$'.$price.'</p>
+					</div>					
+				</div>
+				</td>'); 
+		}
+		print ('</tr></table>');
+	}
+?>
+	<div id="pad_left">
+	<br />
+	<hr />
+	<p>
+		<?php		
+		$category_books = "Books";
+		$books_data = popular_items_for_category($category_books, $order_lines, $num_orders);
+		echo "<h4>Most Popular Items in $category_books</h4>";
+		display_items_index($books_data, $item_lines, $num_items);
+		
+
+		?>
+		
+	</p>
+	</div>
+	
 	</main>
 
 <?php

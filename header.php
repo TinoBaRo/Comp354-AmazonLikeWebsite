@@ -38,6 +38,7 @@
 						<option value="Collectibles">Collectibles</option>
 						<option value="Electronics">Electronics</option>
 						<option value="Fashion Accessories">Fashion Accessories</option>
+						<option value="Gift Cards">Gift Cards</option>
 						<option value="Hardware Supplies">Hardware Supplies</option>
 						<option value="Health & Care">Health & Care</option>
 						<option value="Household Products">Household Products</option>

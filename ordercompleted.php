@@ -15,7 +15,7 @@
 					if(isset($_SESSION['username']) and isset($_SESSION['checkoutItem']))
 					{
 						//order file is as follows--
-						//OrderID(PK):UserID(FK):ItemID(FK):ItemName:ItemCategory:OrderDate
+						//OrderID(PK):UserID(Seller,FK):ItemID(FK):ItemName:ItemCategory:OrderDate
 						$order_file = file("database/orders.txt", FILE_IGNORE_NEW_LINES);
 						//total number of orders in system thus far
 						$num_orders = count($order_file);
