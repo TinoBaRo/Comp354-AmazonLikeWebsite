@@ -12,6 +12,7 @@
 <div class="py-3 text-center">
 	<!-- user information and picture -->
 	<div>
+	
 		<?php  
 			// Show user name profile
 			echo "<h2> Your Profile " . "\"" . $_SESSION['username'] . "\"" . "</h2>";
@@ -29,8 +30,8 @@
 			$email;
 
 			// read and store
-			$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
-			$lineContents = file("loginData.txt"); // Each array element contains a line from the file
+			$myfile = fopen("database/loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+			$lineContents = file("database/loginData.txt"); // Each array element contains a line from the file
 			$length = count($lineContents);
 			fclose($myfile);
 
@@ -64,12 +65,14 @@
 
 	<!--Action Links -->
 	<div>
-		<button><a href="#">Purchase History</a></button> </br></br>
-		<button><a href="userCurrentItems.php">Current Listed Items</a> 
-                </button></br></br>
+		<!--<button><a href="#">Purchase History</a></button> </br></br>-->
+		<a href="userCurrentItems.php"> <button class="btn btn-primary btn-lg">Current Listed Items </button> </a> 
+        
+
+    	</br></br>
 		
-		<button> <a href="postItemPage.php">Post New Item for Sale</a>
-		</button>
+		<a href="postItemPage.php"> <button class="btn btn-primary btn-lg">Post New Item for Sale </button> </a>
+		
 	</div>
 
 

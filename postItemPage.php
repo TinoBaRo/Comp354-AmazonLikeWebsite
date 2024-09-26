@@ -27,11 +27,19 @@ div#pad_left
 		header('location: homePage.php');
 	}	
 ?>
-	<div class="py-5 text-center">
-		<img src="logo354TheStars.png" height="200" width="300">
-	    <h2>Post New Item</h2>
-	    <h4>Enter the following information</h4>
-	</div>
+
+
+<div class="py-5 text-center">
+	<img src="images\logo.png" height="300" width="400">
+	<br>
+    <br>
+
+    <h2>Post New Item</h2>
+    <h4>Enter the following information</h4>
+    
+</div>
+
+
 <?php
 	if(isset($_POST['sell'])) {
 		//gather all of the input data, and make sure nothing important is missing
@@ -95,7 +103,8 @@ div#pad_left
 
 	
     //when user is logged in:
-	if(isset($_SESSION['username']) && !empty($_SESSION['password'])) {
+	if(isset($_SESSION['username']) && !empty($_SESSION['password'])) 
+	{
 		$token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
 
   		if($isLoggedIn) 
@@ -105,49 +114,61 @@ div#pad_left
 	}
 
 ?>
-</div>
-</head>
 
-<hr>
 
-<div class="mx-auto" style="width: 800px;">
-		<form method='POST' enctype="multipart/form-data">
-			Item Name<br />
-			<input type="text" name="itemname" required></input><br />
-			Price ($)<br />
-			<input type="number" name="price" step="0.01" min="0.01" required></input><br />
-			Stock<br />
-			<input type="number" name="stock" step="1" min="1" required><br /> <!-- whole numbers only -->
-			Category<br />
-			<select name="filter">
-				<option value="">-select a category-</option>
-				<option value="Books">Books</option>
-				<option value="Clothing">Clothing</option>
-				<option value="Collectibles">Collectibles</option>
-				<option value="Electronics">Electronics</option>
-				<option value="Fashion Accessories">Fashion Accessories</option>
-				<option value="Hardware Supplies">Hardware Supplies</option>
-				<option value="Health & Care">Health & Care</option>
-				<option value="Household Products">Household Products</option>
-				<option value="Instruments">Instruments</option>
-				<option value="Music">Music</option>
-				<option value="Sports">Sports</option>
-				<option value="Toys">Toys</option>
-				<option value="Vehicles">Vehicles</option>
-				<option value="Video Games">Video Games</option>
-			</select><br />
-			Upload Photo<br />
-			<input type="file" name="file" accept="image/*"><br />
-			Short Description<br />
-			<textarea rows="4" cols="50" name="description_short"></textarea><br />
-			Full Description<br />
-			<textarea rows="12" cols="50" name="description_long"></textarea><br />
-			Return Policy<br />
-			<textarea rows="6" cols="50" name="return_policy"></textarea><br />
-			<br />
-			<input type="submit" name="sell" value="Post" />
-		</form>
+
+<br>
+<br>
+<div class="card">
+	    <div class="card-block">
+	        <div class="mx-auto" style="width: 600px;">
+
+	        
+			<form method='POST' enctype="multipart/form-data">
+				<br>
+    			<br>
+
+				Item Name<br />
+				<input class="form-control" type="text" name="itemname" required></input><br />
+				Price ($)<br />
+				<input class="form-control" type="number" name="price" step="0.01" min="0.01" required></input><br />
+				Stock<br />
+				<input class="form-control" type="number" name="stock" step="1" min="1" required><br /> <!-- whole numbers only -->
+				Category<br />
+				<select class="form-control" name="filter">
+					<option value="">-select a category-</option>
+					<option value="Books">Books</option>
+					<option value="Clothing">Clothing</option>
+					<option value="Collectibles">Collectibles</option>
+					<option value="Electronics">Electronics</option>
+					<option value="Fashion Accessories">Fashion Accessories</option>
+					<option value="Hardware Supplies">Hardware Supplies</option>
+					<option value="Health & Care">Health & Care</option>
+					<option value="Household Products">Household Products</option>
+					<option value="Instruments">Instruments</option>
+					<option value="Music">Music</option>
+					<option value="Sports">Sports</option>
+					<option value="Toys">Toys</option>
+					<option value="Vehicles">Vehicles</option>
+					<option value="Video Games">Video Games</option>
+				</select><br />
+				Upload Photo<br />
+
+				<input class="form-control" type="file" name="file" accept="image/*"><br />
+				Short Description<br />
+				<textarea class="form-control" rows="4" cols="50" name="description_short"></textarea><br />
+				Full Description<br />
+				<textarea class="form-control" rows="12" cols="50" name="description_long"></textarea><br />
+				Return Policy<br />
+				<textarea class="form-control" rows="6" cols="50" name="return_policy"></textarea><br />
+				<br />
+
+				<input class="btn btn-primary btn-lg " type="submit" name="sell" value="Post" />
+			</form>
 		<br/>
+
+		</div>
+	</div>	
 </div>
 
 

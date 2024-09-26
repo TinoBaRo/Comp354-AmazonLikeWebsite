@@ -24,9 +24,12 @@
    		</div>
 
 		<button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-
 	</form>
 
+	<!-- password recovery -->
+	<form class="form-signin" action="passwordRecovery.php" method="post">
+		<button class="btn btn-primary btn-lg btn-block" type="submit">Forgot Password</button>
+	</form>
 
 <!-- don't need the other footer to browse between pages -->
 </body>

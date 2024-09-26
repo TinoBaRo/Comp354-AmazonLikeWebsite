@@ -2,6 +2,7 @@
 <!-- This file processes the login Form (from loginPage.php), and then does an action --> 
 
 <?php
+	include("salt.php");
 	error_reporting(0);
 
 	// start a session when someone logs in
@@ -12,28 +13,13 @@
 	session_start();
 	$_SESSION['username'] = $_POST['userName']; 
 	$_SESSION['password'] = $_POST['password'];
+	$_SESSION['cart'] = array(); //initialize cart as an empty array
 
-
-	// Regular expression for username and password
-	$reg_name = "/^([a-z]|[A-Z]|[0-9])*([a-z]|[A-Z]|[0-9])$/";
-	$reg_password = "/^([a-z]|[A-Z]|[0-9]){6,}$/";
 
 
 	// holder variables we will use for the processing
 	$userName = $_POST['userName'];
 	$userPass = $_POST['password'];
-
-	if( preg_match($reg_name, $userName) == true )
-	{
-		$correctName = true;
-		//echo "True correctName";
-	}
-
-	if( preg_match($reg_password, $userPass) == true )
-	{
-		$correctPass = true;
-		//echo "True correctPass";
-	}
 
 
 	// LOGIN CASES
@@ -43,15 +29,15 @@
 	// if the user enters a non existing user, tell him to sign-up or enter the correct user name (NEED TO DO THIS)
 	$loggedBefore = false;
 
-	$myfile = fopen("loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
+	$myfile = fopen("database/loginData.txt", "r"); // "a" is mode append \\ "w" is mode write \\ "r" is mode read
 
-	$lineContents = file("loginData.txt");
+	$lineContents = file("database/loginData.txt");
 
 	$length = count($lineContents);
 
 	fclose($myfile);
 
-	//print_r($lineContents);
+	
 
 	$correctPassword = false; 
 
@@ -74,12 +60,11 @@
 			$lineName = trim($lineName);
 			$linePass = trim($linePass);
 
-			if( strcmp($userPass, $linePass) == 0 )
+			if (hash_equals($linePass, crypt($userPass, '$2y$07$'.$salt.'$')))
 			{
 				$correctPassword = true;
 				$_SESSION['userid'] = $lineId; // <- user's id also sent to session var
 			}
-
 			// we found the logged value
 			break;
 		}
@@ -89,14 +74,15 @@
 	// make the user try again to enter the correct password
 	if( ($loggedBefore == true) && ($correctPassword == false) )
 	{
-		unset($_SESSION);
-		session_destroy();
-		
 		echo "<h4> The user logged in before, but the password is incorrect. </h4>";
 
 		echo "<h4> Enter password again. </h4>";
 		
 		//echo $userPass . " didn't match " . $linePass;
+
+		// FIX error
+		unset($_SESSION);
+		session_destroy();
 
 		require("loginPage.php");
 	}

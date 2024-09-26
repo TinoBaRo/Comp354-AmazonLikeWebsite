@@ -7,14 +7,16 @@
    
     <div class="card">
         <div class="card-block">
-            <div class="mx-auto" style="width: 200px;">
+            <div class="mx-auto" style="width: 400px;">
               
-                <img class="card-img-top" src="logo354TheStars.png" alt="Card image cap">
-                
+                <img class="card-img-top" src="images\logo.png" alt="Card image cap">
+                <br>
+                <br>
+
                 <h2 class="card-title">Checkout</h2>
 
                 <ul class="list-group list-group-flush">
-
+				
                     <li class="list-group-item"> Item name:
                         <h5>
                             <?php
@@ -35,7 +37,7 @@
                     <li class="list-group-item"> Item price:
                         <h5>
                             <?php
-                                echo  $_SESSION['checkoutItem']['itemPrice'];
+                                echo "$".$_SESSION['checkoutItem']['itemPrice'];
                             ?> 
                         </h5>
                     </li>
@@ -43,34 +45,27 @@
                     <li class="list-group-item">State taxes:
                         <h5>
                             <?php
-                                echo "8%";
+                                echo "15%";
                             ?> 
                         </h5>
                     </li>
 
-                    <li class="list-group-item">Delivery Fee:
-                        <h5>
-                            <?php
-                                echo "$3.99";
-                            ?> 
-                        </h5>
-                    </li>
-                   
                     <li class="list-group-item">Total:
                         <h5>
                             <?php
-                                $total = (($_SESSION['checkoutItem']['itemPrice']*8)/100) + ($_SESSION['checkoutItem']['itemPrice']) + 3.99;
-                                echo $total;
+                                $total = (($_SESSION['checkoutItem']['itemPrice']*15)/100) + ($_SESSION['checkoutItem']['itemPrice']);
+                                echo "$".number_format($total, 2, '.', '');
                             ?> 
                         </h5>
                     </li>
                 </ul>
 
                 <?php
+					echo "<br/>";
                     if ($_SESSION['checkoutItem']['numberStock'] <= 0) 
                     {
                     
-                        echo "<h5>The item is out of stock. Sorry for the inconvenience</h5> 
+                        echo "<h5>The item is out of stock. Sorry for the inconvenience.</h5> 
                         <br/>
                         <a href=\"homePage.php\" class=\"card-link\">Return Home</a>
                         ";
